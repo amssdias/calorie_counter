@@ -5,15 +5,17 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.views.generic.edit import CreateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from apps.accounts.forms.register_form import RegisterForm
 from apps.accounts.utils import generate_token
 
 
-class RegisterView(CreateView):
+class RegisterView(SuccessMessageMixin, CreateView):
     form_class = RegisterForm
-    template_name = "accounts/register.html"
+    template_name = "accounts/pages/register.html"
     success_url = "/accounts/login/"
+    success_message = "User created, check your email to activate your account."
     
     # Settings to send email
     email_subject = "Welcome, activate your account!"

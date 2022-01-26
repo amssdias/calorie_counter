@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    {% include "accounts/messages.html" with messages=messages %}
+    
     <form action="" method="POST">
         {% csrf_token %}
         {{ form }}
@@ -10,6 +12,5 @@
     </form>
 
     <a href="{% url 'register' %}">Register Here</a>
-    <!-- <a href="{% url 'register' %}"></a> -->
 
 {% endblock %}

@@ -42,7 +42,7 @@ MY_PROJECT_APPS = [
     'apps.accounts.apps.AccountsConfig',
 ]
 
-INSTALLED_APPS = MY_PROJECT_APPS + DJANGO_APPS
+INSTALLED_APPS = DJANGO_APPS + MY_PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

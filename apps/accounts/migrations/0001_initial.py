@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
                 ('weight', models.IntegerField(blank=True, null=True)),
                 ('weight_target', models.IntegerField(blank=True, null=True)),
                 ('uuid', models.UUIDField(default=uuid.uuid4, editable=False)),
-                ('user', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

@@ -1,2 +1,2 @@
-from .profile import *
-from .user import *
+from apps.accounts.admin.profile import ProfileAdmin
+from apps.accounts.admin.user import UserAdminCustom
