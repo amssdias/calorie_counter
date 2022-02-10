@@ -19,7 +19,7 @@ class RegisterView(SuccessMessageMixin, CreateView):
     
     # Settings to send email
     email_subject = "Welcome, activate your account!"
-    email_template_name = "accounts/activate/activate_account.html"
+    email_template_name = "accounts/email/activate_account.html"
 
     def form_valid(self, form):
         user = form.save()
