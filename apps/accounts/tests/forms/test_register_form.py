@@ -1,5 +1,3 @@
-from unittest.mock import patch
-
 from django.test import TestCase
 
 from apps.accounts.forms import RegisterForm
