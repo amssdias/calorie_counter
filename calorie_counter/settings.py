@@ -146,7 +146,7 @@ DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 # Authentication backends
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.ModelBackend',
-#     'loginSys.backends.EmailAuthBackEnd',
-# )
+AUTHENTICATION_BACKENDS = [
+    'calorie_counter.backends.email_backend.EmailBackEnd',
+    'django.contrib.auth.backends.ModelBackend',
+]
