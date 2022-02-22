@@ -5,6 +5,6 @@ class TokenGenerator(PasswordResetTokenGenerator):
         """
         Change this hash, so we can check a token for activating email
         """
-        return f'{user.pk}{timestamp}{user.is_active}'
+        return f"{user.pk}{timestamp}{user.is_active}"
 
 generate_token = TokenGenerator()

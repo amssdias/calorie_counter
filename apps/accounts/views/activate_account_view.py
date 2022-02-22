@@ -7,7 +7,7 @@ from apps.accounts.models.user import User
 from apps.accounts.utils import generate_token
 
 class ActivateAccountView(View):
-    template_name = "accounts/activate/activation_failed.html"
+    template_name = "accounts/email/activation_failed.html"
     token_generator = generate_token
     
     def get(self, request, uidb64, token):

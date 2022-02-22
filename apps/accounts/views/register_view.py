@@ -26,6 +26,11 @@ class RegisterView(SuccessMessageMixin, CreateView):
         self.send_email(user=user, request=self.request)
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        response.status_code = 400
+        return response
+
     def send_email(self, user, request):
         current_site = get_current_site(request)
         
