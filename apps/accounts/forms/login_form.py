@@ -17,3 +17,4 @@ class LoginForm(AuthenticationForm):
                 request=self.request,
             )
             raise forms.ValidationError("User is not active, check your inbox for an activation link.")
+        return user

@@ -1,5 +1,3 @@
-from re import template
-from django.views import View
 from django.contrib.auth.views import LoginView
 
 from apps.accounts.forms.login_form import LoginForm

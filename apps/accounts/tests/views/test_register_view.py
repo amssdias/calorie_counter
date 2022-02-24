@@ -27,7 +27,7 @@ class TestRegistrateView(TestCase):
         self.assertEqual(response.redirect_chain[0][1], 302)
         self.assertEqual(response.status_code, 200)
 
-    def test_POST_register_view_wrong_password(self):
+    def test_POST_register_view_unmatching_password(self):
         payload = {
             "email": "testing@gmail.com",
             "password1": "Testing456",
