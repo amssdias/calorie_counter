@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    {% include "accounts/messages.html" with messages=messages %}
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <a href="{% url 'register' %}">Register Here</a>
+
+{% endblock %}

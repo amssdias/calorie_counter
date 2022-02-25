@@ -8,3 +8,7 @@ class Profile(models.Model):
     weight = models.IntegerField(null=True, blank=True)
     weight_target = models.IntegerField(null=True, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+
+    class Meta:
+        verbose_name = "Profile"
+        verbose_name_plural = "Profiles"

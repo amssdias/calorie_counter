@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext_lazy as _
 
 from apps.accounts.models.user import User
 
@@ -20,7 +21,7 @@ class RegisterForm(UserCreationForm):
         email = cleaned_data.get("email")
 
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("User with that email already exists.")
+            raise forms.ValidationError(_("User with that email already exists."))
 
     def save(self, commit=True):
         user = super().save(commit=False)
