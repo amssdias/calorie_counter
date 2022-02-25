@@ -8,7 +8,7 @@ from apps.accounts.models.user import User
 class TestRegistrateView(TestCase):
 
     def setUp(self):
-        self.register_url = reverse("register")
+        self.register_url = reverse("accounts:register")
         return super().setUp()
 
     def test_GET_register_view(self):

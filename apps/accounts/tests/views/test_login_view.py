@@ -7,7 +7,7 @@ from apps.accounts.models.user import User
 class TestLoginView(TestCase):
 
     def setUp(self):
-        self.register_url = reverse("login")
+        self.register_url = reverse("accounts:login")
         return super().setUp()
 
     def test_GET_login_view(self):

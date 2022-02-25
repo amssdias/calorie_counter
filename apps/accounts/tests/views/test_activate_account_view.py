@@ -16,7 +16,7 @@ class TestActivateAccountView(TestCase):
     def test_GET_activate_account_view(self):
         user = User.objects.create_user(username="testing", email="testing@gmail.com", password="Testing123")
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        url = reverse("activate_account", kwargs={
+        url = reverse("accounts:activate_account", kwargs={
             "uidb64": uid,
             "token": generate_token.make_token(user),
         })
@@ -27,7 +27,7 @@ class TestActivateAccountView(TestCase):
         user = User.objects.create_user(username="testing", email="testing@gmail.com", password="Testing123")
         user_1 = User.objects.create_user(username="testing1", email="testing1@gmail.com", password="Testing123")
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        url = reverse("activate_account", kwargs={
+        url = reverse("accounts:activate_account", kwargs={
             "uidb64": uid,
             "token": generate_token.make_token(user_1),
         })
@@ -39,7 +39,7 @@ class TestActivateAccountView(TestCase):
         user = User.objects.create_user(username="testing", email="testing@gmail.com", password="Testing123")
         user_1 = User.objects.create_user(username="testing1", email="testing1@gmail.com", password="Testing123")
         uid = urlsafe_base64_encode(force_bytes(user_1.pk))
-        url = reverse("activate_account", kwargs={
+        url = reverse("accounts:activate_account", kwargs={
             "uidb64": uid,
             "token": generate_token.make_token(user),
         })
@@ -50,7 +50,7 @@ class TestActivateAccountView(TestCase):
     def test_GET_activate_account_view_user_active(self):
         user = User.objects.create_user(username="testing", email="testing@gmail.com", password="Testing123")
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        url = reverse("activate_account", kwargs={
+        url = reverse("accounts:activate_account", kwargs={
             "uidb64": uid,
             "token": generate_token.make_token(user),
         })

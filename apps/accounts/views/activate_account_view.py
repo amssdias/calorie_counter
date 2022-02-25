@@ -21,6 +21,6 @@ class ActivateAccountView(View):
         if user is not None and generate_token.check_token(user, token):
             user.is_active = True
             user.save()
-            return redirect('login')
+            return redirect('accounts:login')
 
         return render(request, self.template_name, status=400)
