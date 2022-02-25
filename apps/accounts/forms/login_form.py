@@ -11,11 +11,16 @@ class LoginForm(AuthenticationForm):
 
     def clean_username(self):
         email = self.cleaned_data['username']
-        user = User.objects.get(email=email)
-        if not user.is_active:
-            # send_email(
-            #     user=user, 
-            #     request=self.request,
-            # )
-            raise forms.ValidationError(_("User is not active, check your inbox for an activation link."))
-        return user
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise forms.ValidationError(_("User does not exist. Register first."))
+        else:
+            if not user.is_active:
+                send_email(
+                    user=user, 
+                    request=self.request,
+                )
+                raise forms.ValidationError(_("User is not active, check your inbox for an activation link."))
+            else:
+                return user
