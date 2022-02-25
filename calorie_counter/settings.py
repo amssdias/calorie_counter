@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -117,6 +118,10 @@ LANGUAGES = [
     ('es', 'Spanish'),
 ]
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, "apps/locale")
+]
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -158,6 +163,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, "apps/locale")
-]
+# Login settings
+LOGIN_REDIRECT_URL = reverse_lazy("accounts:profile")
+LOGIN_URL = reverse_lazy("accounts:login")
+LOGOUT_REDIRECT_URL = reverse_lazy("accounts:login")

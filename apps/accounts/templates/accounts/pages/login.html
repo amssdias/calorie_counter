@@ -7,7 +7,7 @@
 
     {% include "accounts/messages.html" with messages=messages %}
     
-    <form action="" method="POST">
+    <form action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}
         {{ form }}
         <br>
@@ -15,6 +15,6 @@
     </form>
 
 
-    <a href="{% url 'register' %}">Register Here</a>
+    <a href="{% url 'accounts:register' %}">Register Here</a>
 
 {% endblock %}

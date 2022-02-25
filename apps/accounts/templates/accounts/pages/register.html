@@ -3,13 +3,13 @@
 
 {% block content %}
 
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'accounts:register' %}" method="POST">
         {% csrf_token %}
         {{ form }}
         <br>
         <input type="submit" value="Submit">
     </form>
 
-    <a href="{% url 'login' %}">Log in</a>
+    <a href="{% url 'accounts:login' %}">Log in</a>
 
 {% endblock %}
