@@ -1,7 +1,6 @@
 from django.test import TestCase
 
 from apps.accounts.forms import RegisterForm
-from apps.accounts.models import User
 from apps.accounts.models.profile import Profile
 
 
