@@ -2,33 +2,36 @@ from django.test import TestCase
 
 from apps.accounts.forms import RegisterForm
 from apps.accounts.models.profile import Profile
+from apps.accounts.models.user import User
 
 
 class TestRegistrationForm(TestCase):
 
-    def setUp(self):
-        self.data = {
-            "email": "testing@gmail.com",
+    @classmethod
+    def setUpTestData(cls):
+        cls.data = {
+            "email": "test@testing.com",
             "password1": "1234Testing",
             "password2": "1234Testing",
         }
-        self.wrong_data = {
-            "email": "testing@gmail.com",
-            "password1": "5678Testing",
-            "password2": "1234Testing",
-        }
-        self.register_form = RegisterForm(data=self.data)
-        self.register_form_invalid = RegisterForm(data=self.wrong_data)
-        return super().setUp()
+        cls.register_form = RegisterForm(data=cls.data)
+        return super().setUpTestData()
 
     def test_form_valid(self):
         self.assertTrue(self.register_form.is_valid())
 
-    def test_form_invalid(self):
-        self.assertFalse(self.register_form_invalid.is_valid())
-        self.assertTrue(self.register_form_invalid.has_error("password2"))
-        self.assertEqual(len(self.register_form_invalid.errors), 1)
+    def test_form_invalid_password(self):
+        wrong_data = {
+            "email": "testing@gmail.com",
+            "password1": "5678Testing",
+            "password2": "1234Testing",
+        }
+        register_form_invalid = RegisterForm(data=wrong_data)
+        self.assertFalse(register_form_invalid.is_valid())
+        self.assertTrue(register_form_invalid.has_error("password2"))
+        self.assertEqual(len(register_form_invalid.errors), 1)
         
+    def test_form_no_data(self):
         register_form_empty = RegisterForm(data={})
         self.assertFalse(register_form_empty.is_valid())
 
@@ -42,3 +45,7 @@ class TestRegistrationForm(TestCase):
         self.register_form.is_valid()
         user = self.register_form.save()
         self.assertFalse(user.is_active)
+
+    def test_form_user_exists(self):
+        User.objects.create_user(username="Test", email="test@testing.com", password="Testing123")
+        self.assertFalse(self.register_form.is_valid())

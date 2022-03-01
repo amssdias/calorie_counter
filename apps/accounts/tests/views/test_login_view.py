@@ -8,7 +8,7 @@ class TestLoginView(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create(username="Test", email="test@testing.com", password="password123")
+        cls.user = User.objects.create_user(username="Test", email="test@testing.com", password="password123")
         cls.login_url = reverse("accounts:login")
         return super().setUpTestData()
 
