@@ -9,7 +9,7 @@ from .views import (
     ActivateAccountView, 
     CustomPasswordResetView, 
     CustomPasswordResetConfirmView,
-    ProfileView, 
+    ProfileDetailView, 
     )
 
 app_name = "accounts"
@@ -23,9 +23,8 @@ urlpatterns = [
     path("forgot_password/", CustomPasswordResetView.as_view(), name="reset_password_custom"),
     path("reset/<uidb64>/<token>", CustomPasswordResetConfirmView.as_view(), name="password_reset_confirm"),
 
-    path("profile/", ProfileView.as_view(), name="profile"),
+    path("profile/<uuid:uuid>/", ProfileDetailView.as_view(), name="profile"),
     path("logout/", LogoutView.as_view(), name="logout"),
-    # path('<uuid:uuid>/', ProfileView, name="main"),
-    # path('', RedirectView.as_view(url="login")),
+    path("", RedirectView.as_view(url="login")),
 ]
 

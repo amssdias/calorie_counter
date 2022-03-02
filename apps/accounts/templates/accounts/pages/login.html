@@ -5,21 +5,24 @@
 
 {% block content %}
 
-    {% include "accounts/messages.html" with messages=messages %}
+    {% include "accounts/components/nav-bar.html" %}
+
+    {% include "accounts/components/messages.html" with messages=messages %}
     
     <form action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}
         {{ form }}
         <br>
-        <input type="submit" value="Submit">
+        <button type="submit" class="btn btn-warning">{% translate "Log in" %}</button>
+
     </form>
 
 
     <p>
-        <a href="{% url 'accounts:register' %}">Register Here</a><br>
+        <a href="{% url 'accounts:register' %}" class="link-info">{% translate "Register here" %}</a><br>
     </p>
     <p>
-        <a href="{% url 'accounts:reset_password_custom' %}">Forgot your password?</a>
+        <a href="{% url 'accounts:reset_password_custom' %}" class="link-info">{% translate "Forgot your password?" %}</a>
     </p>
 
 {% endblock %}

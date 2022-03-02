@@ -33,7 +33,7 @@ class TestLoginView(TestCase):
             "email": "test_wrong@testing.com",
             "password": "password123",
         }
-        response = self.client.post(self.login_url, payload, follow=True)
+        response = self.client.post(self.login_url, payload, follow=True, secure=True)
 
         # By default django sends a status code of 200 for invalid credentials or some error to login
         # Therefore we can check for some errors
@@ -46,6 +46,20 @@ class TestLoginView(TestCase):
     def test_POST_login_view_wrong_password(self):
         payload = {
             "email": "test@testing.com",
+            "password": "wrong_password",
+        }
+        response = self.client.post(self.login_url, payload, follow=True)
+
+        # By default django sends a status code of 200 for invalid credentials or some error to login
+        # Therefore we can check for some errors
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "accounts/pages/login.html")
+        self.assertTrue("invalid_login" in response.context_data["form"].error_messages)
+        self.assertFalse(response.context_data["form"].is_valid())
+
+    def test_POST_login_view_wrong_email(self):
+        payload = {
+            "email": "wrong_test@testing.com",
             "password": "wrong_password",
         }
         response = self.client.post(self.login_url, payload, follow=True)

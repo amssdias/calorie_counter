@@ -164,6 +164,5 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Login settings
-LOGIN_REDIRECT_URL = reverse_lazy("accounts:profile")
 LOGIN_URL = reverse_lazy("accounts:login")
 LOGOUT_REDIRECT_URL = reverse_lazy("accounts:login")

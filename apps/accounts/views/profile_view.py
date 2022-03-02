@@ -1,10 +1,16 @@
-from django.shortcuts import render
-from django.views import View
+from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
-class ProfileView(LoginRequiredMixin, View):
-    login_url = reverse_lazy('accounts:login')
+from apps.accounts.models.profile import Profile
 
-    def get(self, request, *args, **kwargs):
-        return render(request, "accounts/pages/profile.html")
+class ProfileDetailView(LoginRequiredMixin, DetailView):
+    template_name = "accounts/pages/profile.html"
+    model = Profile
+
+    def get_object(self, queryset=None):
+        return Profile.objects.get(uuid=self.kwargs.get("uuid"))
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfileDetailView, self).get_context_data(**kwargs)
+        return context

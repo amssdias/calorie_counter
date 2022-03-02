@@ -39,6 +39,4 @@ class TestLoginForm(TestCase):
         }
         login_form = LoginForm(data=data)
         self.assertFalse(login_form.is_valid())
-
-
     

@@ -5,7 +5,29 @@
 
     <h1>Welcome to the website</h1>
 
-
-
     <a href="{% url 'accounts:logout' %}">Logout</a>
+
+    <h2>Your weight</h2>
+    {{ profile }}
+    {% if profile.weight %}
+        <h5>{{ profile.weight|floatformat:2 }}</h5>
+    {% else %}
+        <h5>You haven't setup your weight.</h5>
+        <a href="">Setup your profile details.</a>
+    {% endif %}
+
+
+    <h2>What you got today</h2>
+
+    <h3>Foods</h3>
+    <!-- TODO: Table displaying foods with his nutrition values -->
+    <ul>
+        <li>Rice</li>
+        <li>Juice</li>
+        <li>Chicken</li>
+    </ul>
+
+    <a href="#">Register Food</a>
+    <a href="#">View other day</a>
+
 {% endblock %}
