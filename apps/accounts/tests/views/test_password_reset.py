@@ -1,14 +1,15 @@
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
 from apps.accounts.models.user import User
+from apps.accounts.views.password_reset_view import CustomPasswordResetView
 
 
 class TestPasswordResetView(TestCase):
     
     @classmethod
     def setUpTestData(cls):
-        User.objects.create(username="testing", email="testing@gmail.com", password="1234test")
+        cls.user = User.objects.create_user(username="Test", email="test@testing.com", password="1234test")
         cls.reset_password_url = reverse("accounts:reset_password_custom")
         return super().setUpTestData()
 
@@ -17,17 +18,15 @@ class TestPasswordResetView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "accounts/password-reset/password_reset_form.html")
 
+    def test_POST_password_reset_view_status_code(self):
+        # TODO: Use RequestFactory
+        pass
 
-    def test_POST_password_reset_view(self):
-        payload = {
-            "email": "testing@gmail.com"
-        }
-        response = self.client.post(self.reset_password_url, payload, follow=True, secure=True)
-        self.assertEqual(response.redirect_chain[0][0], reverse("accounts:login"))
-        self.assertEqual(response.redirect_chain[0][1], 302)
-        self.assertEqual(response.status_code, 200)
+    def test_POST_password_reset_view_redirect(self):
+        # TODO: Use RequestFactory
+        pass
 
-    def test_POST_password_reset_view(self):
+    def test_POST_password_reset_view_wrong_email(self):
         payload = {
             "email": "testing_wrong@gmail.com"
         }
