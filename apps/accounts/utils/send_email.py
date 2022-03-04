@@ -1,19 +1,21 @@
 from django.core.mail import EmailMessage
-from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
+from apps.accounts.models.user import User
 from apps.accounts.utils import generate_token
 
 
-def send_email(user, request, email_subject="Activate your account", email_template_name="accounts/email/activate_account.html"):
-    current_site = get_current_site(request)
-        
+def send_email(user_id, domain):
+    email_subject="Activate your account"
+    email_template_name="accounts/email/activate_account.html"
+    
+    user = User.objects.get(id=user_id)
     message = render_to_string(email_template_name, 
     {
         "user": user,
-        "domain": current_site.domain,
+        "domain": domain,
         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
         "token": generate_token.make_token(user)
     })

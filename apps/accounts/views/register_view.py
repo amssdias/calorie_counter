@@ -1,9 +1,12 @@
-from django.views.generic.edit import CreateView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import gettext
+from django.views.generic.edit import CreateView
 
 from apps.accounts.forms.register_form import RegisterForm
-from apps.accounts.utils import send_email
+from apps.accounts.tasks.send_email import send_email_async
+
+from calorie_counter.utils.celery import task_celery
 
 
 class RegisterView(SuccessMessageMixin, CreateView):
@@ -13,7 +16,10 @@ class RegisterView(SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        send_email(user=user, request=self.request)
+
+        current_site = get_current_site(self.request)
+        task_celery(send_email_async, user_id=user.id, domain=current_site.domain)
+
         return super().form_valid(form)
 
     def form_invalid(self, form):

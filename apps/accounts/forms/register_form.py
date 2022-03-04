@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from apps.accounts.models.user import User
 
+
 class RegisterForm(UserCreationForm):
     email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 
@@ -26,6 +27,7 @@ class RegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_active = False
+        user.username = user.email
         if commit:
             user.save()
         return user
