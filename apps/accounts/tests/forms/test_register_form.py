@@ -1,10 +1,11 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from apps.accounts.forms import RegisterForm
 from apps.accounts.models.profile import Profile
 from apps.accounts.models.user import User
 
 
+@override_settings(CELERY_ENABLED=False)
 class TestRegistrationForm(TestCase):
 
     @classmethod
