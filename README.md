@@ -2,7 +2,8 @@
 [django-link]: https://www.djangoproject.com/
 
 ![Python Badge](https://img.shields.io/badge/Python-3.9-blue?logo=python)
-![Python Badge](https://img.shields.io/badge/Django-3.2.11-092E20?logo=django)
+![Python Badge](https://img.shields.io/badge/Django-3.2.12-092E20?logo=django)
+![example branch parameter](https://github.com/amssdias/calorie_counter/actions/workflows/testing.yml/badge.svg?branch=master)
 
 
 <h1 align=center>Calorie Counter</h1>
@@ -23,7 +24,7 @@ This project was made before by me, but I decided to do a better version of it, 
 ### Pre requisites
 
 - [Python][python-download] - 3.9 or up
-- [Django][django-link] - 3.2.11
+- [Django][django-link] - 3.2.12
 
 
 ### Installation
@@ -37,7 +38,7 @@ cd calorie_counter
 
 #### Configure settings (email)
 
-Fill up the ".env_sample_file" file, so users can receive activation links and to reset passwords. Rename it as well to ".env".
+Fill up the "_**.env_sample_file**_" file, so users can receive activation links and to reset passwords. Rename it as well to ".env".
 
 
 #### Install dependencies & activate virtualenv
@@ -73,7 +74,7 @@ If any doubts here's a link to some more explanations: [Pipenv](https://pipenv-f
 
 ## :mag_right: Usage
 
-
+### On one terminal window:
 ```python
 pipenv shell
 python manage.py runserver
@@ -82,6 +83,20 @@ python manage.py runserver
 Paste this link on your browser:
 **http://127.0.0.1:8000/accounts/login**
 
+### If we want to use celery to run tasks asynchronously:
+
+Go to  "_**calorie_counter/settings.py**_" file and change:
+```python 
+CELERY_ENABLED = True
+```
+
+On a new terminal window run:
+```python
+pipenv shell
+celery -A calourie_counter.celery worker -l info
+celery -A calorie_counter.celery worker --pool=solo -l info # For windows
+```
+
 
 ## Features
 
@@ -89,3 +104,5 @@ Paste this link on your browser:
   - Send email to activate account
 - Log in
 	- Via email and password
+	- Resend activation link
+	- Reset password

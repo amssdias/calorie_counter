@@ -26,4 +26,9 @@ def send_email(user_id, domain):
         to=[user.email],
     )
     
-    email.send()
+    try:
+        email.send()
+    except Exception as e:
+        raise Exception(e)
+
+    return True
