@@ -1,19 +1,18 @@
-from django.test import TestCase, override_settings
+from django.test import TestCase
 
 from apps.accounts.forms import RegisterForm
 from apps.accounts.models.profile import Profile
 from apps.accounts.models.user import User
 
 
-@override_settings(CELERY_ENABLED=False)
 class TestRegistrationForm(TestCase):
 
     @classmethod
     def setUpTestData(cls):
         cls.data = {
             "email": "test@testing.com",
-            "password1": "1234Testing",
-            "password2": "1234Testing",
+            "password1": "randompassword.1234",
+            "password2": "randompassword.1234",
         }
         cls.register_form = RegisterForm(data=cls.data)
         return super().setUpTestData()

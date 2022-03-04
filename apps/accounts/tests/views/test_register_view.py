@@ -15,8 +15,8 @@ class TestRegistrateView(TestCase):
         cls.register_url = reverse("accounts:register")
         cls.payload = {
             "email": "testing@gmail.com",
-            "password1": "Testing123",
-            "password2": "Testing123",
+            "password1": "randompassword.1234",
+            "password2": "randompassword.1234",
         }
         return super().setUpTestData()
 
