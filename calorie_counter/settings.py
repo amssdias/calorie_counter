@@ -175,26 +175,49 @@ CELERY_RESULT_BACKEND = "redis://localhost"
 
 # LOGS
 LOGGING = {
-    'version': 1,
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-        }
+    "version": 1,
+    "disable_existing_loggers": False,
+    "loggers": {
+        "django": {
+            "handlers": ["file_info", "file_warning", "file_error"],
+            "level": "INFO",
+        },
     },
-    'handlers': {
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': './logs/info.log',
-            'formatter': 'simpleRe',
-        }
+    "handlers": {
+        "file_info": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "./logs/info.log",
+            "formatter": "simple_format",
+        },
+        "file_warning": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": "./logs/warning.log",
+            "formatter": "warning_format",
+        },
+        "file_error": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": "./logs/error.log",
+            "formatter": "error_format",
+        },
     },
-    'formatters': {
-        'simpleRe': {
-            'format': '{levelname:8s} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-            'datefmt': '%d-%m-%Y %H:%M:%S'
-        }
+    "formatters": {
+        "simple_format": {
+            "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
+            "style": "{",
+            "datefmt": "%d-%m-%Y %H:%M:%S",
+        },
+        "warning_format": {
+            "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
+            "style": "{",
+            "datefmt": "%d-%m-%Y %H:%M:%S",
+    },
+        "error_format": {
+            "format": "{levelname:8s}: {asctime} {filename} {message} - {pathname}: {lineno}",
+            "style": "{",
+            "datefmt": "%d-%m-%Y %H:%M:%S",
+    },
     }
 }

@@ -1,3 +1,5 @@
+import logging
+
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.contrib.sites.shortcuts import get_current_site
@@ -7,6 +9,7 @@ from apps.accounts.models.user import User
 from apps.accounts.tasks.send_email import send_email_async
 from calorie_counter.utils.celery import task_celery
 
+logger = logging.getLogger("django")
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(label="Email", widget=forms.TextInput(attrs={'autofocus': True}))
@@ -20,7 +23,8 @@ class LoginForm(AuthenticationForm):
         else:
             if not user.is_active:
 
-                # Send activation link to user
+                logger.info("Sending activation link to user.")
+
                 current_site = get_current_site(self.request)
                 task_celery(send_email_async, user_id=user.id, domain=current_site.domain)
 
