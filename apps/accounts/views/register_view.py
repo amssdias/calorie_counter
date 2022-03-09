@@ -12,8 +12,6 @@ class RegisterView(SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         form.request = self.request
-        form.save()
-
         return super().form_valid(form)
 
     def form_invalid(self, form):

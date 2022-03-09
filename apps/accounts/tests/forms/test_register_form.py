@@ -1,4 +1,5 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
+from django.urls import reverse
 
 from apps.accounts.forms import RegisterForm
 from apps.accounts.models.profile import Profile
@@ -15,6 +16,11 @@ class TestRegistrationForm(TestCase):
             "password2": "randompassword.1234",
         }
         cls.register_form = RegisterForm(data=cls.data)
+        
+        cls.factory = RequestFactory()
+        cls.request = cls.factory.post(reverse("accounts:register"), cls.data)
+        cls.register_form.request = cls.request
+        
         return super().setUpTestData()
 
     def test_form_valid(self):
