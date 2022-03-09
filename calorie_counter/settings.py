@@ -179,29 +179,34 @@ LOGGING = {
     "disable_existing_loggers": True,
     "loggers": {
         "django": {
-            "handlers": ["file_info", "file_warning", "file_error"],
+            "handlers": ["console"],
             "level": "INFO",
         },
     },
     "handlers": {
-        "file_info": {
-            "level": "DEBUG",
-            "class": "logging.FileHandler",
-            "filename": "./logs/info.log",
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
             "formatter": "simple_format",
         },
-        "file_warning": {
-            "level": "WARNING",
-            "class": "logging.FileHandler",
-            "filename": "./logs/warning.log",
-            "formatter": "warning_format",
-        },
-        "file_error": {
-            "level": "ERROR",
-            "class": "logging.FileHandler",
-            "filename": "./logs/error.log",
-            "formatter": "error_format",
-        },
+        # "file_info": {
+        #     "level": "DEBUG",
+        #     "class": "logging.FileHandler",
+        #     "filename": "./logs/info.log",
+        #     "formatter": "simple_format",
+        # },
+        # "file_warning": {
+        #     "level": "WARNING",
+        #     "class": "logging.FileHandler",
+        #     "filename": "./logs/warning.log",
+        #     "formatter": "warning_format",
+        # },
+        # "file_error": {
+        #     "level": "ERROR",
+        #     "class": "logging.FileHandler",
+        #     "filename": "./logs/error.log",
+        #     "formatter": "error_format",
+        # },
     },
     "formatters": {
         "simple_format": {
