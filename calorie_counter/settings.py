@@ -176,7 +176,7 @@ CELERY_RESULT_BACKEND = "redis://localhost"
 # LOGS
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "loggers": {
         "django": {
             "handlers": ["file_info", "file_warning", "file_error"],
