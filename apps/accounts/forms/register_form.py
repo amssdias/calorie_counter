@@ -1,9 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import gettext_lazy as _
 
 from apps.accounts.models.user import User
+from apps.accounts.tasks.send_email import send_email_async
 
+from calorie_counter.utils.celery import task_celery
 
 class RegisterForm(UserCreationForm):
     email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -30,6 +33,9 @@ class RegisterForm(UserCreationForm):
         user.username = user.email
         if commit:
             user.save()
+
+            current_site = get_current_site(self.request)
+            task_celery(send_email_async, user_id=user.id, domain=current_site.domain)
         return user
   
     
