@@ -171,3 +171,30 @@ LOGOUT_REDIRECT_URL = reverse_lazy("accounts:login")
 CELERY_ENABLED = False
 CELERY_BROKER_URL = "redis://127.0.0.1:6379"
 CELERY_RESULT_BACKEND = "redis://localhost"
+
+
+# LOGS
+LOGGING = {
+    'version': 1,
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+        }
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': './logs/info.log',
+            'formatter': 'simpleRe',
+        }
+    },
+    'formatters': {
+        'simpleRe': {
+            'format': '{levelname:8s} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+            'datefmt': '%d-%m-%Y %H:%M:%S'
+        }
+    }
+}
