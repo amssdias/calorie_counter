@@ -38,7 +38,7 @@ cd calorie_counter
 
 #### Configure settings (email)
 
-Fill up the "_**.env_sample_file**_" file, so users can receive activation links and to reset passwords. Rename it as well to ".env".
+Fill up the "_**.env.example**_" file, so users can receive activation links and to reset passwords. Rename it as well to ".env".
 
 
 #### Install dependencies & activate virtualenv
@@ -84,11 +84,6 @@ Paste this link on your browser:
 **http://127.0.0.1:8000/accounts/login**
 
 ### If we want to use celery to run tasks asynchronously:
-
-Go to  "_**calorie_counter/settings.py**_" file and change:
-```python 
-CELERY_ENABLED = True
-```
 
 On a new terminal window run:
 ```python

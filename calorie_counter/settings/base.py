@@ -10,9 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+
+from dotenv import load_dotenv
+from pathlib import Path
 from django.urls import reverse_lazy
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+01rjt^m#w9_jxu!s6##q3j6fch*i5_h#_x4tn0q!zni&3qmls'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 # Application definition
 DJANGO_APPS = [
@@ -61,7 +65,7 @@ ROOT_URLCONF = 'calorie_counter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
+        'DIRS': [os.path.join(os.path.dirname(BASE_DIR), 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,9 +85,13 @@ WSGI_APPLICATION = 'calorie_counter.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": os.environ.get("DB_ENGINE"),
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
 
@@ -119,7 +127,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, "apps/locale")
+    os.path.join(os.path.dirname(BASE_DIR), "apps/locale")
 ]
 
 TIME_ZONE = 'UTC'
@@ -135,10 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static/')
 
 # MEDIA FILES
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media/')
 MEDIA_URL = '/media/'
 
 # Default primary key field type
@@ -168,9 +176,14 @@ LOGIN_URL = reverse_lazy("accounts:login")
 LOGOUT_REDIRECT_URL = reverse_lazy("accounts:login")
 
 # CELERY SETTINGS
-CELERY_ENABLED = False
+CELERY_ENABLED = True
 CELERY_BROKER_URL = "redis://127.0.0.1:6379"
 CELERY_RESULT_BACKEND = "redis://localhost"
+
+# HTTPS
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_HOST = ""
+SECURE_SSL_REDIRECT = False
 
 
 # LOGS
@@ -189,24 +202,6 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "simple_format",
         },
-        # "file_info": {
-        #     "level": "DEBUG",
-        #     "class": "logging.FileHandler",
-        #     "filename": "./logs/info.log",
-        #     "formatter": "simple_format",
-        # },
-        # "file_warning": {
-        #     "level": "WARNING",
-        #     "class": "logging.FileHandler",
-        #     "filename": "./logs/warning.log",
-        #     "formatter": "warning_format",
-        # },
-        # "file_error": {
-        #     "level": "ERROR",
-        #     "class": "logging.FileHandler",
-        #     "filename": "./logs/error.log",
-        #     "formatter": "error_format",
-        # },
     },
     "formatters": {
         "simple_format": {
@@ -218,11 +213,11 @@ LOGGING = {
             "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
             "style": "{",
             "datefmt": "%d-%m-%Y %H:%M:%S",
-    },
+        },
         "error_format": {
             "format": "{levelname:8s}: {asctime} {filename} {message} - {pathname}: {lineno}",
             "style": "{",
             "datefmt": "%d-%m-%Y %H:%M:%S",
-    },
+        },
     }
 }
