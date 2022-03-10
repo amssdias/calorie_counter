@@ -6,60 +6,64 @@ DEBUG = True
 CELERY_ENABLED = False
 
 # HTTPS
+# The cookie will be marked as “secure”, 
+# which means browsers may ensure that the cookie is only sent under an HTTPS connection.
 SESSION_COOKIE_SECURE = False
+
+# All SSL redirects will be directed to this host rather than the originally-requested host 
 SECURE_SSL_HOST = ""
 SECURE_SSL_REDIRECT = False
 
 # LOGS
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": True,
-    "loggers": {
-        "django": {
-            "handlers": ["file_info", "file_warning", "file_error"],
-            "level": "INFO",
-        },
-    },
-    "handlers": {
-        "console": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "simple_format",
-        },
-        "file_info": {
-            "level": "DEBUG",
-            "class": "logging.FileHandler",
-            "filename": "./logs/info.log",
-            "formatter": "simple_format",
-        },
-        "file_warning": {
-            "level": "WARNING",
-            "class": "logging.FileHandler",
-            "filename": "./logs/warning.log",
-            "formatter": "warning_format",
-        },
-        "file_error": {
-            "level": "ERROR",
-            "class": "logging.FileHandler",
-            "filename": "./logs/error.log",
-            "formatter": "error_format",
-        },
-    },
-    "formatters": {
-        "simple_format": {
-            "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
-            "style": "{",
-            "datefmt": "%d-%m-%Y %H:%M:%S",
-        },
-        "warning_format": {
-            "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
-            "style": "{",
-            "datefmt": "%d-%m-%Y %H:%M:%S",
-        },
-        "error_format": {
-            "format": "{levelname:8s}: {asctime} {filename} {message} - {pathname}: {lineno}",
-            "style": "{",
-            "datefmt": "%d-%m-%Y %H:%M:%S",
-        },
-    }
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": True,
+#     "loggers": {
+#         "django": {
+#             "handlers": ["file_info", "file_warning", "file_error"],
+#             "level": "INFO",
+#         },
+#     },
+#     "handlers": {
+#         "console": {
+#             "level": "INFO",
+#             "class": "logging.StreamHandler",
+#             "formatter": "simple_format",
+#         },
+#         "file_info": {
+#             "level": "DEBUG",
+#             "class": "logging.FileHandler",
+#             "filename": "./logs/info.log",
+#             "formatter": "simple_format",
+#         },
+#         "file_warning": {
+#             "level": "WARNING",
+#             "class": "logging.FileHandler",
+#             "filename": "./logs/warning.log",
+#             "formatter": "warning_format",
+#         },
+#         "file_error": {
+#             "level": "ERROR",
+#             "class": "logging.FileHandler",
+#             "filename": "./logs/error.log",
+#             "formatter": "error_format",
+#         },
+#     },
+#     "formatters": {
+#         "simple_format": {
+#             "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
+#             "style": "{",
+#             "datefmt": "%d-%m-%Y %H:%M:%S",
+#         },
+#         "warning_format": {
+#             "format": "{levelname:8s} {asctime}: {message} - {filename}: {lineno}",
+#             "style": "{",
+#             "datefmt": "%d-%m-%Y %H:%M:%S",
+#         },
+#         "error_format": {
+#             "format": "{levelname:8s}: {asctime} {filename} {message} - {pathname}: {lineno}",
+#             "style": "{",
+#             "datefmt": "%d-%m-%Y %H:%M:%S",
+#         },
+#     }
+# }
