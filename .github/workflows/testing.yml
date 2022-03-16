@@ -1,4 +1,4 @@
-name: Testing
+name: Test all apps
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
   
 jobs:
-  test_accounts_app:
+  run_tests_accounts_app:
     runs-on: ubuntu-latest
 
     steps:
