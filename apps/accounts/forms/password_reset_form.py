@@ -14,4 +14,4 @@ class CustomPasswordResetForm(PasswordResetForm):
         except User.DoesNotExist:
             raise forms.ValidationError(_("Email is not registered. Register first."))
         else:
-            return user
+            return self.cleaned_data['email']

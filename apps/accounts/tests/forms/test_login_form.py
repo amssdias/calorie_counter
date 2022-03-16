@@ -15,12 +15,20 @@ class TestLoginForm(TestCase):
         }
     
     def test_form_valid(self):
-        # TODO: Use Request Factory
-        pass
+        data = {
+            "username": "test@testing.com",
+            "password": "1234Testing"
+        }
+        login_form = LoginForm(data=data)
+        self.assertTrue(login_form.is_valid())
 
     def test_form_invalid_password(self):
-        # TODO: Use Request Factory
-        pass
+        data = {
+            "username": "test@testing.com",
+            "password": "Testing"
+        }
+        login_form = LoginForm(data=data)
+        self.assertFalse(login_form.is_valid())
 
     def test_form_invalid_email(self):
         data = {

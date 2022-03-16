@@ -19,12 +19,18 @@ class TestPasswordResetView(TestCase):
         self.assertTemplateUsed(response, "accounts/password-reset/password_reset_form.html")
 
     def test_POST_password_reset_view_status_code(self):
-        # TODO: Use RequestFactory
-        pass
+        payload = {
+            "email": "test@testing.com",
+        }
+        response = self.client.post(self.reset_password_url, payload, follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_POST_password_reset_view_redirect(self):
-        # TODO: Use RequestFactory
-        pass
+        payload = {
+            "email": "test@testing.com",
+        }
+        response = self.client.post(self.reset_password_url, payload, follow=True)
+        self.assertEqual(response.redirect_chain[0][0], reverse("accounts:login"))
 
     def test_POST_password_reset_view_wrong_email(self):
         payload = {
