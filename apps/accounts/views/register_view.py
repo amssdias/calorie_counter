@@ -1,4 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.utils.translation import gettext
 from django.views.generic.edit import CreateView
 
@@ -9,6 +10,12 @@ class RegisterView(SuccessMessageMixin, CreateView):
     form_class = RegisterForm
     template_name = "accounts/pages/register.html"
     success_url = "/accounts/login/"
+    redirect_authenticated_user = True
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.redirect_authenticated_user and self.request.user.is_authenticated:
+            return redirect("accounts:profile", uuid=self.request.user.profile.uuid, permanent=True)
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         form.request = self.request
