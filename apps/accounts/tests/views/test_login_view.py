@@ -17,6 +17,13 @@ class TestLoginView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "accounts/pages/login.html")
 
+    def test_GET_login_view_logged_user(self):
+        self.client.login(username="test@testing.com", password="password123")
+        response = self.client.get(self.login_url, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.redirect_chain[0][0], reverse("accounts:profile", kwargs={"uuid": self.user.profile.uuid}))
+        self.assertTemplateUsed(response, "accounts/pages/profile.html")
+
     def test_POST_login_view(self):
         payload = {
             "email": "test@testing.com",
