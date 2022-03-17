@@ -3,7 +3,8 @@
 
 ![Python Badge](https://img.shields.io/badge/Python-3.9-blue?logo=python)
 ![Python Badge](https://img.shields.io/badge/Django-3.2.12-092E20?logo=django)
-![example branch parameter](https://github.com/amssdias/calorie_counter/actions/workflows/testing.yml/badge.svg?branch=master)
+![Workflow branch master](https://github.com/amssdias/calorie_counter/actions/workflows/testing.yml/badge.svg?branch=master)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 
 <h1 align=center>Calorie Counter</h1>
