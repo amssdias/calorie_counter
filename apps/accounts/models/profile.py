@@ -4,7 +4,9 @@ from django.conf import settings
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True
+    )
     weight = models.FloatField(null=True, blank=True)
     weight_target = models.FloatField(null=True, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)

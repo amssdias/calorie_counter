@@ -12,25 +12,27 @@ logger = logging.getLogger("django")
 
 
 def send_email(user_id, domain):
-    email_subject="Activate your account"
-    email_template_name="accounts/email/activate_account.html"
-    
+    email_subject = "Activate your account"
+    email_template_name = "accounts/email/activate_account.html"
+
     user = User.objects.get(id=user_id)
     logger.info("Generating template with token.")
-    message = render_to_string(email_template_name, 
-    {
-        "user": user,
-        "domain": domain,
-        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-        "token": generate_token.make_token(user)
-    })
+    message = render_to_string(
+        email_template_name,
+        {
+            "user": user,
+            "domain": domain,
+            "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+            "token": generate_token.make_token(user),
+        },
+    )
 
     email = EmailMessage(
         subject=email_subject,
         body=message,
         to=[user.email],
     )
-    
+
     try:
         logger.info(f"Sent email to user: {user_id}")
         email.send()

@@ -9,10 +9,11 @@ from apps.accounts.models.user import User
 
 
 class TestRegistrateView(TestCase):
-
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="Test", email="test@testing.com", password="password123")
+        cls.user = User.objects.create_user(
+            username="Test", email="test@testing.com", password="password123"
+        )
         cls.register_url = reverse("accounts:register")
         cls.payload = {
             "email": "testing@gmail.com",
@@ -31,11 +32,16 @@ class TestRegistrateView(TestCase):
         self.client.login(username="test@testing.com", password="password123")
         response = self.client.get(self.register_url, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.redirect_chain[0][0], reverse("accounts:profile", kwargs={"uuid": self.user.profile.uuid}))
+        self.assertEqual(
+            response.redirect_chain[0][0],
+            reverse("accounts:profile", kwargs={"uuid": self.user.profile.uuid}),
+        )
         self.assertTemplateUsed(response, "accounts/pages/profile.html")
 
     def test_POST_register_view(self):
-        response = self.client.post(self.register_url, self.payload, follow=True, secure=True)
+        response = self.client.post(
+            self.register_url, self.payload, follow=True, secure=True
+        )
         self.assertEqual(response.redirect_chain[0][1], 302)
         self.assertEqual(response.status_code, 200)
 
@@ -58,5 +64,7 @@ class TestRegistrateView(TestCase):
     def test_POST_register_view_unmatching_password(self):
         wrong_password_payload = copy.deepcopy(self.payload)
         wrong_password_payload.update({"password2": "Testing456"})
-        response = self.client.post(self.register_url, wrong_password_payload, secure=True)
+        response = self.client.post(
+            self.register_url, wrong_password_payload, secure=True
+        )
         self.assertEqual(response.status_code, 400)

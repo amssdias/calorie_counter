@@ -5,14 +5,14 @@ from apps.accounts.models.user import User
 
 
 class TestUserModel(TestCase):
-
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="Test", email="test@testing.com", password="testing1234")
+        cls.user = User.objects.create_user(
+            username="Test", email="test@testing.com", password="testing1234"
+        )
 
     def test_signal_profile_was_created(self):
         self.assertTrue(Profile.objects.get(user=self.user))
 
     def test_user_str(self):
         self.assertEqual(str(self.user), "test@testing.com")
-        

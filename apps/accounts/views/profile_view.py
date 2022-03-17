@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 
 from apps.accounts.models.profile import Profile
 
+
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     template_name = "accounts/pages/profile.html"
     model = Profile

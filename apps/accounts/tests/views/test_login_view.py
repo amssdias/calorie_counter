@@ -5,10 +5,11 @@ from apps.accounts.models.user import User
 
 
 class TestLoginView(TestCase):
-
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="Test", email="test@testing.com", password="password123")
+        cls.user = User.objects.create_user(
+            username="Test", email="test@testing.com", password="password123"
+        )
         cls.login_url = reverse("accounts:login")
         return super().setUpTestData()
 
@@ -21,7 +22,10 @@ class TestLoginView(TestCase):
         self.client.login(username="test@testing.com", password="password123")
         response = self.client.get(self.login_url, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.redirect_chain[0][0], reverse("accounts:profile", kwargs={"uuid": self.user.profile.uuid}))
+        self.assertEqual(
+            response.redirect_chain[0][0],
+            reverse("accounts:profile", kwargs={"uuid": self.user.profile.uuid}),
+        )
         self.assertTemplateUsed(response, "accounts/pages/profile.html")
 
     def test_POST_login_view(self):

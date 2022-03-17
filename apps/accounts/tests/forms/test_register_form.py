@@ -7,7 +7,6 @@ from apps.accounts.models.user import User
 
 
 class TestRegistrationForm(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.data = {
@@ -16,11 +15,11 @@ class TestRegistrationForm(TestCase):
             "password2": "randompassword.1234",
         }
         cls.register_form = RegisterForm(data=cls.data)
-        
+
         cls.factory = RequestFactory()
         cls.request = cls.factory.post(reverse("accounts:register"), cls.data)
         cls.register_form.request = cls.request
-        
+
         return super().setUpTestData()
 
     def test_form_valid(self):
@@ -36,7 +35,7 @@ class TestRegistrationForm(TestCase):
         self.assertFalse(register_form_invalid.is_valid())
         self.assertTrue(register_form_invalid.has_error("password2"))
         self.assertEqual(len(register_form_invalid.errors), 1)
-        
+
     def test_form_no_data(self):
         register_form_empty = RegisterForm(data={})
         self.assertFalse(register_form_empty.is_valid())
@@ -53,5 +52,7 @@ class TestRegistrationForm(TestCase):
         self.assertFalse(user.is_active)
 
     def test_form_user_exists(self):
-        User.objects.create_user(username="Test", email="test@testing.com", password="Testing123")
+        User.objects.create_user(
+            username="Test", email="test@testing.com", password="Testing123"
+        )
         self.assertFalse(self.register_form.is_valid())

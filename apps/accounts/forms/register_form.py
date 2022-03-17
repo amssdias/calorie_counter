@@ -8,17 +8,18 @@ from apps.accounts.tasks.send_email import send_email_async
 
 from calorie_counter.utils.celery import task_celery
 
+
 class RegisterForm(UserCreationForm):
-    email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}))
 
     class Meta:
         model = User
-        fields = ("email", )
+        fields = ("email",)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["password1"].widget.attrs.update({"class":"form-control"})
-        self.fields["password2"].widget.attrs.update({"class":"form-control"})
+        self.fields["password1"].widget.attrs.update({"class": "form-control"})
+        self.fields["password2"].widget.attrs.update({"class": "form-control"})
 
     def clean(self):
         cleaned_data = super().clean()
@@ -26,6 +27,7 @@ class RegisterForm(UserCreationForm):
 
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError(_("User with that email already exists."))
+        return cleaned_data
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -37,5 +39,3 @@ class RegisterForm(UserCreationForm):
             current_site = get_current_site(self.request)
             task_celery(send_email_async, user_id=user.id, domain=current_site.domain)
         return user
-  
-    

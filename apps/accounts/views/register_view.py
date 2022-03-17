@@ -14,7 +14,9 @@ class RegisterView(SuccessMessageMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if self.redirect_authenticated_user and self.request.user.is_authenticated:
-            return redirect("accounts:profile", uuid=self.request.user.profile.uuid, permanent=True)
+            return redirect(
+                "accounts:profile", uuid=self.request.user.profile.uuid, permanent=True
+            )
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):

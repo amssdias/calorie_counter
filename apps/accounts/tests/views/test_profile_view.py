@@ -5,11 +5,14 @@ from apps.accounts.models.user import User
 
 
 class TestProfileDetailView(TestCase):
-
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="Test", email="test@testing.com", password="testing123")
-        cls.register_url = reverse("accounts:profile", kwargs={"uuid": cls.user.profile.uuid})
+        cls.user = User.objects.create_user(
+            username="Test", email="test@testing.com", password="testing123"
+        )
+        cls.register_url = reverse(
+            "accounts:profile", kwargs={"uuid": cls.user.profile.uuid}
+        )
         return super().setUpTestData()
 
     def test_GET_profile_view_status_code(self):
