@@ -6,6 +6,6 @@ class AccountsConfig(AppConfig):
     name = "apps.accounts"
 
     def ready(self):
-        import apps.accounts.signals.create_profile
+        import apps.accounts.signals
 
         return super().ready()
