@@ -22,5 +22,5 @@ urlpatterns = [
     path('cc-admin/', admin.site.urls),
     path("accounts/", include("apps.accounts.urls")),
     path("", RedirectView.as_view(url=reverse_lazy("accounts:login"))),
-    # path('foods/', include('food.urls'))
+    path('foods/', include('apps.foods.urls')),
 ]

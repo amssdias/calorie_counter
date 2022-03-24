@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}All foods{% endblock %}
+
+{% block content %}
+    <h1>Hello World</h1>
+    
+    {% for object in object_list %}
+        <p>{{object}}</p>
+    {% endfor %}
+{% endblock %}
