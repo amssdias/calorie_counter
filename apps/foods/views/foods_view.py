@@ -23,11 +23,11 @@ class FoodListView(LoginRequiredMixin, ListView):
         )
 
 
-class FoodDetailView(DetailView):
+class FoodDetailView(LoginRequiredMixin, DetailView):
     model = Food
     template_name_suffix = "_detail"
 
-class FoodUpdateView(UpdateView):
+class FoodUpdateView(LoginRequiredMixin, UpdateView):
     model = Food
     fields = "__all__"
     template_name_suffix = '_update_form'

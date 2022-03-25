@@ -28,5 +28,5 @@ class Food(models.Model):
         return f"{self.name} - {self.brand}"
 
     def get_absolute_url(self):
-        url = reverse("foods:food_details", kwargs={'slug': self.slug})
+        url = reverse("foods:food_details", kwargs={"slug": self.slug})
         return url
