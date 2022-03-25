@@ -25,11 +25,10 @@ class RegisteredFood(models.Model):
         Profile, on_delete=models.CASCADE, related_name="registered_foods"
     )
     food = models.ForeignKey(
-        Food, on_delete=models.CASCADE, related_name="registered_by_users"
+        Food, on_delete=models.CASCADE, null=True, related_name="registered_by_users"
     )
     meal = models.CharField(max_length=4, choices=MEALS)
-    date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(max_length=200, null=True, blank=True)
 
 
 class BreakfastRegistered(RegisteredFood):

@@ -11,7 +11,8 @@ from apps.foods.models import (
 
 
 class RegisteredFoodAdminCustom(admin.ModelAdmin):
-    list_display = ("get_user", "food", "meal", "date")
+    list_display = ("get_user", "food", "meal")
+    readonly_fields = ("slug",)
 
     @admin.display(description="User")
     def get_user(self, obj):
