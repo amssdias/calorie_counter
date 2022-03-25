@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Food Name{% endblock %}
+
+{% block content %}
+    <h1>Food Detail</h1>
+    <h2>{{ object.name }}</h2>
+    
+    {{ object }}
+
+    {% if object.created_by == request.user.profile %}
+        <a href="{% url 'foods:food_update' slug=object.slug %}">Update Food</a> 
+        <a href="#">Delete Food</a>
+    {% endif %}
+{% endblock %}

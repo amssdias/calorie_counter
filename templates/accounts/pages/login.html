@@ -5,9 +5,9 @@
 
 {% block content %}
 
-    {% include "accounts/components/nav-bar.html" %}
+    {% include "components/nav-bar.html" %}
 
-    {% include "accounts/components/messages.html" with messages=messages %}
+    {% include "components/messages.html" with messages=messages %}
     
     <form action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}

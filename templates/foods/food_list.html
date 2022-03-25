@@ -8,5 +8,8 @@
     
     {% for object in object_list %}
         <p>{{object}}</p>
+        <a href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
+        <a href="#">Delete Food</a>
+        <hr>
     {% endfor %}
 {% endblock %}
