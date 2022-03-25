@@ -23,7 +23,6 @@ jobs:
       run: |
         python3 manage.py test apps/accounts --settings=calorie_counter.settings.test
 
-jobs:
   run_tests_foods_app:
     runs-on: ubuntu-latest
 
