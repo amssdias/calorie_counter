@@ -1,5 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.utils.translation import gettext
 from django.views.generic.edit import CreateView
 
@@ -9,7 +10,7 @@ from apps.accounts.forms.register_form import RegisterForm
 class RegisterView(SuccessMessageMixin, CreateView):
     form_class = RegisterForm
     template_name = "accounts/pages/register.html"
-    success_url = "/accounts/login/"
+    success_url = reverse_lazy("accounts:login")
     redirect_authenticated_user = True
 
     def dispatch(self, request, *args, **kwargs):
