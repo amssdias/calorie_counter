@@ -4,7 +4,9 @@ from django.urls import reverse, resolve
 from apps.foods.views import (
     FoodDetailView,
     FoodUpdateView,
-    FoodListView
+    FoodListView,
+    FoodCreateView,
+    FoofDeleteView,
 )
 
 
@@ -25,3 +27,12 @@ class TestUrls(TestCase):
         view_class = resolve(url).func.view_class
         self.assertEqual(view_class, FoodUpdateView)
 
+    def test_food_create_url_resolves(self):
+        url = reverse("foods:food_create")
+        view_class = resolve(url).func.view_class
+        self.assertEqual(view_class, FoodCreateView)
+    
+    def test_food_delete_url_resolves(self):
+        url = reverse("foods:food_delete", kwargs={"slug": "slug-field"})
+        view_class = resolve(url).func.view_class
+        self.assertEqual(view_class, FoofDeleteView)
