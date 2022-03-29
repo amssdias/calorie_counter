@@ -4,12 +4,18 @@
 {% block title %}All foods{% endblock %}
 
 {% block content %}
-    <h1>Hello World</h1>
+    <h1>All foods (List Foods)</h1>
+
+    <a href="{% url 'foods:food_create' %}">Create new Food</a>
+
+    <hr><hr>
     
     {% for object in object_list %}
         <p>{{object}}</p>
         <a href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
-        <a href="#">Delete Food</a>
+        {% if object.created_by.user == request.user %}
+            <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
+        {% endif %}
         <hr>
     {% endfor %}
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Delete food{% endblock %}
+
+{% block content %}
+    <h1>Delete food (DELETE view)</h1>
+
+    <h2>Are you sure you want to delete {{ object }}?</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Delete">
+    </form>
+
+
+{% endblock %}
