@@ -1,6 +1,13 @@
 from django.urls import path
 
-from apps.foods.views.foods_view import FoodDetailView, FoodListView, FoodUpdateView, FoodCreateView, FoofDeleteView
+from apps.foods.views import ( 
+    FoodDetailView, 
+    FoodListView, 
+    FoodUpdateView, 
+    FoodCreateView, 
+    FoofDeleteView,
+    RegistereFoodListView,
+)
 
 
 app_name = "foods"
@@ -10,4 +17,6 @@ urlpatterns = [
     path("detail/<slug:slug>", FoodDetailView.as_view(), name="food_details"),
     path("update/<slug:slug>", FoodUpdateView.as_view(), name="food_update"),
     path("delete/<slug:slug>", FoofDeleteView.as_view(), name="food_delete"),
+
+    path("registered_foods/", RegistereFoodListView.as_view(), name="registered_foods"),
 ]
