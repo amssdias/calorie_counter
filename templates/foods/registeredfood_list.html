@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}All foods{% endblock %}
+
+{% block content %}
+    <h1>Registered foods list</h1>
+
+    <hr><hr>
+    
+    {% for object in object_list %}
+        <p>{{ object }}</p>
+        <a href="#">Check details of food</a>
+        <hr>
+    {% endfor %}
+
+    <br>
+    <a href="#">Register New food</a>
+{% endblock %}

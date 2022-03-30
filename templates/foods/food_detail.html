@@ -11,6 +11,9 @@
 
     {% if object.created_by == request.user.profile %}
         <a href="{% url 'foods:food_update' slug=object.slug %}">Update Food</a> 
-        <a href="#">Delete Food</a>
+        <a href="#">Register Food</a>
+        {% if object.created_by.user == request.user %}
+            <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
+        {% endif %}
     {% endif %}
 {% endblock %}

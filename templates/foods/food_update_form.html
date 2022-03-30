@@ -6,11 +6,6 @@
 {% block content %}
     <h1>Update Food Details</h1>
     
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <input type="submit" value="Update">
-    </form>
+    {% include 'components/form.html' with form=form btn_name='Update food' %}
 
 {% endblock %}

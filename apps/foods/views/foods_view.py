@@ -1,10 +1,13 @@
-from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Q
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.urls import reverse_lazy
+from django.utils.translation import gettext as _
 
+from apps.foods.forms import FoodCreateForm
 from apps.foods.models.food import Food
 
 
@@ -16,7 +19,7 @@ class FoodListView(LoginRequiredMixin, ListView):
         queryset = super().get_queryset()
         return queryset.filter(
             Q(created_by=self.request.user.profile) | Q(created_by__isnull=True)
-        )
+        ).order_by("created_by")
 
 
 class FoodDetailView(LoginRequiredMixin, DetailView):
@@ -26,18 +29,18 @@ class FoodDetailView(LoginRequiredMixin, DetailView):
 
 class FoodUpdateView(LoginRequiredMixin, UpdateView):
     model = Food
-    fields = "__all__"
+    form_class = FoodCreateForm
     template_name_suffix = "_update_form"
 
     def get_success_url(self):
         return self.object.get_absolute_url()
 
 
-class FoodCreateView(LoginRequiredMixin, CreateView):
+class FoodCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Food
-    fields = "__all__"
-    form_class = None
+    form_class = FoodCreateForm
     success_url = reverse_lazy("foods:list_foods")
+    success_message = _("Food was created successfully")
 
     def form_valid(self, form):
         food = form.save(commit=False)

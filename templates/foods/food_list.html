@@ -6,6 +6,8 @@
 {% block content %}
     <h1>All foods (List Foods)</h1>
 
+    {% include 'components/messages.html' with messages=messages %}
+
     <a href="{% url 'foods:food_create' %}">Create new Food</a>
 
     <hr><hr>
@@ -13,6 +15,7 @@
     {% for object in object_list %}
         <p>{{object}}</p>
         <a href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
+        <a href="#">Register Food</a>
         {% if object.created_by.user == request.user %}
             <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
         {% endif %}
