@@ -30,6 +30,9 @@ class RegisteredFood(models.Model):
     meal = models.CharField(max_length=4, choices=MEALS)
     slug = models.SlugField(max_length=200, null=True, blank=True)
 
+    def __str__(self):
+        return f"{self.food.name} - {self.food.brand}"
+
 
 class BreakfastRegistered(RegisteredFood):
     objects = RegisteredFoodManager(RegisteredFood.BREAKFAST)

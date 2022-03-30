@@ -9,4 +9,4 @@ class FoodAdmin(admin.ModelAdmin):
 
     @admin.display(description="created by")
     def get_user(self, obj):
-        return obj.created_by.user.email if obj.created_by.user.username else obj.created_by
+        return obj.created_by.user.email if obj.created_by else obj.created_by
