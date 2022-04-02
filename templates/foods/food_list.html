@@ -11,6 +11,12 @@
     <a href="{% url 'foods:food_create' %}">Create new Food</a>
 
     <hr><hr>
+    <span>Order by: </span>
+    <a href="{% url 'foods:list_foods' %}?ordering=name">Name</a>
+    <a href="{% url 'foods:list_foods' %}?ordering=brand">Brand</a>
+    <a href="{% url 'foods:list_foods' %}?ordering=calories">Calories</a>
+    <a href="{% url 'foods:list_foods' %}?ordering=protein">Protein</a>
+    <hr><hr>
     
     {% for object in object_list %}
         <p>{{object}}</p>

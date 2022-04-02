@@ -14,12 +14,17 @@ from apps.foods.models.food import Food
 class FoodListView(LoginRequiredMixin, ListView):
     model = Food
     template_name_suffix = "_list"
+    ordering = "created_by"
 
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(
             Q(created_by=self.request.user.profile) | Q(created_by__isnull=True)
-        ).order_by("created_by")
+        )
+    
+    def get_ordering(self):
+        ordering = self.request.GET.get("ordering", "created_by")
+        return ordering
 
 
 class FoodDetailView(LoginRequiredMixin, DetailView):
