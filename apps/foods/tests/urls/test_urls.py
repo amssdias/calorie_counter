@@ -7,6 +7,8 @@ from apps.foods.views import (
     FoodListView,
     FoodCreateView,
     FoofDeleteView,
+    RegistereFoodListView, 
+    RegisteredFoodCreateView, 
 )
 
 
@@ -36,3 +38,13 @@ class TestUrls(TestCase):
         url = reverse("foods:food_delete", kwargs={"slug": "slug-field"})
         view_class = resolve(url).func.view_class
         self.assertEqual(view_class, FoofDeleteView)
+
+    def test_list_registered_food_url_resolves(self):
+        url = reverse("foods:registered_foods")
+        view_class = resolve(url).func.view_class
+        self.assertEqual(view_class, RegistereFoodListView)
+    
+    def test_create_registered_food_url_resolves(self):
+        url = reverse("foods:register_food_create")
+        view_class = resolve(url).func.view_class
+        self.assertEqual(view_class, RegisteredFoodCreateView)
