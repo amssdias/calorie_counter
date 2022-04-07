@@ -7,6 +7,7 @@ from apps.foods.views import (
     FoodCreateView, 
     FoofDeleteView,
     RegistereFoodListView,
+    RegisteredFoodCreateView, 
 )
 
 
@@ -19,4 +20,5 @@ urlpatterns = [
     path("delete/<slug:slug>", FoofDeleteView.as_view(), name="food_delete"),
 
     path("registered_foods/", RegistereFoodListView.as_view(), name="registered_foods"),
+    path("register_food/", RegisteredFoodCreateView.as_view(), name="register_food_create"),
 ]
