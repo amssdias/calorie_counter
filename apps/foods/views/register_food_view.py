@@ -10,4 +10,5 @@ class RegistereFoodListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(user=self.request.user.profile)
+        return queryset.filter(user_profile=self.request.user.profile)
+

@@ -21,7 +21,7 @@ class RegisteredFood(models.Model):
         (SNACK, _("Snack")),
     )
 
-    user = models.ForeignKey(
+    user_profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, related_name="registered_foods"
     )
     food = models.ForeignKey(

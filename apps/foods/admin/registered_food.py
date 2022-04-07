@@ -16,7 +16,7 @@ class RegisteredFoodAdminCustom(admin.ModelAdmin):
 
     @admin.display(description="User")
     def get_user(self, obj):
-        return obj.user.user.username
+        return obj.user_profile.user.username
 
 
 admin.site.register(RegisteredFood, RegisteredFoodAdminCustom)
