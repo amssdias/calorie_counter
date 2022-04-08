@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from apps.foods.forms import FoodCreateForm
-from apps.foods.models import Food, food
+from apps.foods.models import Food
 
 
 class TestRegistrationForm(TestCase):

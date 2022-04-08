@@ -21,6 +21,11 @@ class RegisteredFoodCreateView(LoginRequiredMixin, CreateView):
     form_class = RegisteredFoodCreateForm
     success_url = reverse_lazy("foods:registered_foods") # Must Redirect to FoodConsumedCreateView
 
+    def get_form_kwargs(self):
+        kwargs = super(RegisteredFoodCreateView, self).get_form_kwargs()
+        kwargs.update({"request": self.request})
+        return kwargs
+
     def form_valid(self, form):
         registered_food = form.save(commit=False)
         registered_food.user_profile = self.request.user.profile

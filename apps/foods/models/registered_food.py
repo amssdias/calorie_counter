@@ -30,6 +30,13 @@ class RegisteredFood(models.Model):
     meal = models.CharField(max_length=4, choices=MEALS)
     slug = models.SlugField(max_length=200, null=True, blank=True)
 
+    class Meta:
+        verbose_name = _("Registered Food")
+        verbose_name_plural = _("Registered Foods")
+        constraints = [
+            models.UniqueConstraint(fields=["user_profile", "food", "meal"], name="unique_user_food_meal")
+        ]
+
     def __str__(self):
         return f"{self.food.name} - {self.food.brand}"
 
