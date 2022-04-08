@@ -1,13 +1,11 @@
-from dataclasses import field
-from tkinter import Widget
 from django import forms
 
 from apps.foods.models import Food
 
+
 class FoodCreateForm(forms.ModelForm):
     class Meta:
         model = Food
-        fields = "__all__"
         exclude = ["slug", "created_by"]
         labels = {
             "weight": "Weight (Kg/Ml)",

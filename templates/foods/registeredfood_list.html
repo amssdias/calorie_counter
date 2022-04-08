@@ -6,6 +6,7 @@
 {% block content %}
     <h1>Registered foods list</h1>
 
+    <a href="{% url 'foods:register_food_create' %}">Register New food</a>
     <hr><hr>
     
     {% for object in object_list %}
@@ -15,5 +16,4 @@
     {% endfor %}
 
     <br>
-    <a href="{% url 'foods:register_food_create' %}">Register New food</a>
 {% endblock %}

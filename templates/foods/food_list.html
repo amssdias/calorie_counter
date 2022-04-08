@@ -21,7 +21,7 @@
     {% for object in object_list %}
         <p>{{object}}</p>
         <a href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
-        <a href="#">Register Food</a>
+        <a href="{% url 'foods:register_food_create_initial' object.slug %}">Register Food</a>
         {% if object.created_by.user == request.user %}
             <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
         {% endif %}
