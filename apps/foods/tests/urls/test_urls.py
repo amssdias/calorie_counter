@@ -9,6 +9,7 @@ from apps.foods.views import (
     FoofDeleteView,
     RegistereFoodListView, 
     RegisteredFoodCreateView, 
+    RegisteredFoodInitialCreateView, 
 )
 
 
@@ -48,3 +49,8 @@ class TestUrls(TestCase):
         url = reverse("foods:register_food_create")
         view_class = resolve(url).func.view_class
         self.assertEqual(view_class, RegisteredFoodCreateView)
+    
+    def test_create_registered_food_url_resolves(self):
+        url = reverse("foods:register_food_create_initial", kwargs={"food_slug": "slug-field"})
+        view_class = resolve(url).func.view_class
+        self.assertEqual(view_class, RegisteredFoodInitialCreateView)

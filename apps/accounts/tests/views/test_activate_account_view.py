@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-from apps.accounts.models.profile import Profile
 from apps.accounts.models.user import User
 from apps.accounts.utils import generate_token
 
