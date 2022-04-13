@@ -20,8 +20,8 @@ class FoodListView(LoginRequiredMixin, ListView):
         queryset = super().get_queryset()
         return queryset.filter(
             Q(created_by=self.request.user.profile) | Q(created_by__isnull=True)
-        )
-    
+        ).select_related("created_by__user")
+
     def get_ordering(self):
         ordering = self.request.GET.get("ordering", "created_by")
         return ordering
@@ -30,6 +30,12 @@ class FoodListView(LoginRequiredMixin, ListView):
 class FoodDetailView(LoginRequiredMixin, DetailView):
     model = Food
     template_name_suffix = "_detail"
+
+    def get_object(self, queryset=None):
+        food = Food.objects.select_related("created_by__user").get(
+            slug=self.kwargs.get("slug")
+        )
+        return food
 
 
 class FoodUpdateView(LoginRequiredMixin, UpdateView):

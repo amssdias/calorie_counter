@@ -10,7 +10,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
 
     def get_object(self, queryset=None):
-        return Profile.objects.get(uuid=self.kwargs.get("uuid"))
+        return Profile.objects.select_related("user").get(uuid=self.kwargs.get("uuid"))
 
     def get_context_data(self, **kwargs):
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
