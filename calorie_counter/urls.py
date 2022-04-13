@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
 
 from django.contrib import admin
 from django.urls import path, include, reverse_lazy
@@ -24,3 +25,6 @@ urlpatterns = [
     path("", RedirectView.as_view(url=reverse_lazy("accounts:login"))),
     path('foods/', include('apps.foods.urls')),
 ]
+
+if os.environ.get("DJANGO_DEBUG_TOOLBAR", False):
+    urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]

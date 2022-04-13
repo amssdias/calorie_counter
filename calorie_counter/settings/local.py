@@ -1,4 +1,4 @@
-import os
+from .base import *
 
 SECRET_KEY="django-insecure-+01rjt^m#w9_jxu!s6##q3j6fch*i5_h#_x4rn0q!zni&3qmls"
 
@@ -17,6 +17,11 @@ DATABASES = {
 
 # Celery
 CELERY_ENABLED = False
+
+# DJANGO DEBUG TOOLBAR
+INSTALLED_APPS.append("debug_toolbar")
+MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+INTERNAL_IPS = ["127.0.0.1"]
 
 # HTTPS
 # The cookie will be marked as “secure”, 
