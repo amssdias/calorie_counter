@@ -65,6 +65,6 @@ class FoodCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class FoofDeleteView(LoginRequiredMixin, DeleteView):
+class FoodDeleteView(LoginRequiredMixin, DeleteView):
     model = Food
     success_url = reverse_lazy("foods:list_foods")

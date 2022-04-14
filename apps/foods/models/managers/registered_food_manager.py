@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class RegisteredFoodManager(models.Manager):
+class FoodConsumedManager(models.Manager):
     def __init__(self, meal: str, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.meal = meal

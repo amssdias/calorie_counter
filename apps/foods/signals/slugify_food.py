@@ -16,6 +16,6 @@ def slugify_food(sender, instance, created, *args, **kwargs):
 @receiver(post_save, sender=RegisteredFood)
 def slugify_registered_food(sender, instance, created, *args, **kwargs):
     if created:
-        new_slug = f"{instance.food.name} {instance.meal} {instance.user_profile.uuid}"
+        new_slug = f"{instance.food.name} {instance.user_profile.uuid}"
         instance.slug = slugify(new_slug)
         instance.save()

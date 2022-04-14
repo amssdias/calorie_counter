@@ -3,11 +3,15 @@ from apps.foods.views.foods_view import (
     FoodDetailView,
     FoodUpdateView,
     FoodCreateView,
-    FoofDeleteView,
+    FoodDeleteView,
 )
 
 from apps.foods.views.register_food_view import (
     RegistereFoodListView,
     RegisteredFoodCreateView, 
     RegisteredFoodInitialCreateView, 
+)
+
+from apps.foods.views.food_consumed import (
+    FoodConsumedListView, 
 )

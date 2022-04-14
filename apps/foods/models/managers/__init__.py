@@ -1,1 +1,1 @@
-from apps.foods.models.managers.registered_food_manager import RegisteredFoodManager
+from apps.foods.models.managers.registered_food_manager import FoodConsumedManager

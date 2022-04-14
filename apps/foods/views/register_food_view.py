@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 
 from apps.foods.forms import RegisteredFoodCreateForm
@@ -40,3 +40,8 @@ class RegisteredFoodInitialCreateView(RegisteredFoodCreateView):
         food = Food.objects.get(slug=food_slug)
         initial = {"food": food}
         return initial
+
+
+class RegisteredFoodDeleteView(LoginRequiredMixin, DeleteView):
+    model = Food
+    success_url = reverse_lazy("foods:list_foods")

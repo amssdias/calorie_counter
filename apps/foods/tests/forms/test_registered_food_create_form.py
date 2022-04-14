@@ -20,7 +20,6 @@ class TestRegistrationForm(TestCase):
         
         cls.data = {
             "food": cls.food,
-            "meal": RegisteredFood.DINNER,
         }
         
         return super().setUpTestData()
@@ -31,11 +30,6 @@ class TestRegistrationForm(TestCase):
 
     def test_form_invalid_food(self):
         self.data["food"] = "Rice"
-        registered_food_form = RegisteredFoodCreateForm(data=self.data, request=self.request)
-        self.assertFalse(registered_food_form.is_valid())
-
-    def test_form_invalid_meal(self):
-        self.data["meal"] = "DINNER"
         registered_food_form = RegisteredFoodCreateForm(data=self.data, request=self.request)
         self.assertFalse(registered_food_form.is_valid())
 

@@ -1,17 +1,10 @@
 from django.contrib import admin
 
-from apps.foods.models import (
-    RegisteredFood,
-    BreakfastRegistered,
-    LunchRegistered,
-    DinnerRegistered,
-    DessertRegistered,
-    SnacksRegisteredFood,
-)
+from apps.foods.models import RegisteredFood
 
 
 class RegisteredFoodAdminCustom(admin.ModelAdmin):
-    list_display = ("get_user", "food", "meal")
+    list_display = ("get_user", "food")
     readonly_fields = ("slug",)
 
     @admin.display(description="User")
@@ -20,8 +13,3 @@ class RegisteredFoodAdminCustom(admin.ModelAdmin):
 
 
 admin.site.register(RegisteredFood, RegisteredFoodAdminCustom)
-admin.site.register(BreakfastRegistered, RegisteredFoodAdminCustom)
-admin.site.register(LunchRegistered, RegisteredFoodAdminCustom)
-admin.site.register(DinnerRegistered, RegisteredFoodAdminCustom)
-admin.site.register(DessertRegistered, RegisteredFoodAdminCustom)
-admin.site.register(SnacksRegisteredFood, RegisteredFoodAdminCustom)

@@ -12,7 +12,6 @@ class RegisteredFoodCreateForm(forms.ModelForm):
 
         widgets = {
             "food": forms.Select(attrs={"class": "form-control"}),
-            "meal": forms.Select(attrs={"class": "form-control"}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -26,9 +25,8 @@ class RegisteredFoodCreateForm(forms.ModelForm):
         cleaned_data = super().clean()
         user_profile = self.request.user.profile
         food = cleaned_data.get("food")
-        meal = cleaned_data.get("meal")
         queryset = RegisteredFood.objects.filter(
-            user_profile=user_profile, food=food, meal=meal
+            user_profile=user_profile, food=food
         )
         if queryset.exists():
             raise forms.ValidationError(

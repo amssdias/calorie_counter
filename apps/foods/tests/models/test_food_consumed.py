@@ -16,10 +16,9 @@ class TestFoodModel(TestCase):
         cls.food_registered = RegisteredFood.objects.create(
             user_profile=cls.user.profile,
             food=cls.coca_cola,
-            meal=RegisteredFood.DINNER,
         )
         cls.food_consumed = FoodConsumed.objects.create(
-            registered_food=cls.food_registered, grams=25
+            registered_food=cls.food_registered, grams=25, meal=FoodConsumed.DINNER
         )
 
     def test_food_consumed_str(self):
