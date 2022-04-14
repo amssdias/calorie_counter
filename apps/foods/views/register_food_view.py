@@ -9,6 +9,7 @@ from apps.foods.models import Food, RegisteredFood
 
 class RegistereFoodListView(LoginRequiredMixin, ListView):
     model = RegisteredFood
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()

@@ -15,6 +15,7 @@ class FoodListView(LoginRequiredMixin, ListView):
     model = Food
     template_name_suffix = "_list"
     ordering = "created_by"
+    paginate_by = 20
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -25,6 +26,10 @@ class FoodListView(LoginRequiredMixin, ListView):
     def get_ordering(self):
         ordering = self.request.GET.get("ordering", "created_by")
         return ordering
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class FoodDetailView(LoginRequiredMixin, DetailView):
