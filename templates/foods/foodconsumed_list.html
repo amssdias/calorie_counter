@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}All foods{% endblock %}
+{% block title %}Food consumed{% endblock %}
 
 {% block content %}
-    <h1>Registered foods list</h1>
+    <h1>Food Consumed</h1>
 
-    <a href="{% url 'foods:register_food_create' %}">Register New food</a>
+    <a href="#">Add New food</a>
     <hr><hr>
     
     {% for object in object_list %}
         <p>{{ object }}</p>
-        <a href="{% url 'foods:food_consumed_list' object.slug %}">Check details of food</a>
+        <a href="#">Check details of consumed food</a>
         <hr>
     {% endfor %}
 
