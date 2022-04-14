@@ -10,6 +10,7 @@ from apps.foods.views.register_food_view import (
     RegistereFoodListView,
     RegisteredFoodCreateView, 
     RegisteredFoodInitialCreateView, 
+    RegisteredFoodDeleteView, 
 )
 
 from apps.foods.views.food_consumed import (

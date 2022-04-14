@@ -43,5 +43,5 @@ class RegisteredFoodInitialCreateView(RegisteredFoodCreateView):
 
 
 class RegisteredFoodDeleteView(LoginRequiredMixin, DeleteView):
-    model = Food
-    success_url = reverse_lazy("foods:list_foods")
+    model = RegisteredFood
+    success_url = reverse_lazy("foods:registered_foods")
