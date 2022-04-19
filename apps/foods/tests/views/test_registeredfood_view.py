@@ -5,7 +5,7 @@ from apps.accounts.models.user import User
 from apps.foods.models import Food
 
 
-class TestProfileDetailView(TestCase):
+class TestRegisteredFoodViews(TestCase):
 
     @classmethod
     def setUpTestData(cls):
