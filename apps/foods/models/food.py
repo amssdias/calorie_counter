@@ -9,11 +9,11 @@ class Food(models.Model):
     brand = models.CharField(max_length=70, null=True, blank=True)
     weight = models.IntegerField(default=100)
     calories = models.DecimalField(max_digits=8, decimal_places=2)
-    total_fat = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    carbs = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    fiber = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    protein = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    salt = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+    total_fat = models.DecimalField(default=0, max_digits=8, decimal_places=2)
+    carbs = models.DecimalField(default=0, max_digits=8, decimal_places=2)
+    fiber = models.DecimalField(default=0, max_digits=8, decimal_places=2)
+    protein = models.DecimalField(default=0, max_digits=8, decimal_places=2)
+    salt = models.DecimalField(default=0, max_digits=8, decimal_places=2)
 
     slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
     created_by = models.ForeignKey(
