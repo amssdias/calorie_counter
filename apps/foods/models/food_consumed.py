@@ -28,6 +28,7 @@ class FoodConsumed(TimeStampable):
     class Meta:
         verbose_name = _("Food Consumed")
         verbose_name_plural = _("Foods Consumed")
+        ordering = ["-created"]
 
     def __str__(self):
         return f"{self.registered_food.user_profile} - {self.registered_food.food} ({self.grams} Kg/Ml)"
