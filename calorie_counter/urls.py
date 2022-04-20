@@ -26,5 +26,5 @@ urlpatterns = [
     path('foods/', include('apps.foods.urls')),
 ]
 
-if os.getenv.get("DJANGO_DEBUG_TOOLBAR", False):
+if os.environ.get("DJANGO_DEBUG_TOOLBAR", False):
     urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
