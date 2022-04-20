@@ -22,7 +22,7 @@ class FoodConsumed(TimeStampable):
     )
 
     registered_food = models.ForeignKey(RegisteredFood, on_delete=models.CASCADE, related_name="consumed")
-    grams = models.IntegerField(help_text=_("Kg/Ml"))
+    grams = models.IntegerField()
     meal = models.CharField(max_length=4, choices=MEALS)
 
     class Meta:
