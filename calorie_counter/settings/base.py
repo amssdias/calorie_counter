@@ -222,5 +222,3 @@ LOGGING = {
         },
     }
 }
-
-DJANGO_DEBUG_TOOLBAR = os.environ.get("DJANGO_DEBUG_TOOLBAR", False)
