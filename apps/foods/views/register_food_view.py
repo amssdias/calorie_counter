@@ -23,6 +23,9 @@ class RegisteredFoodCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("foods:registered_foods") # Must Redirect to FoodConsumedCreateView
 
     def get_form_kwargs(self):
+        """
+        Send request to form.__init__ so we can show the form with filtered foods
+        """
         kwargs = super(RegisteredFoodCreateView, self).get_form_kwargs()
         kwargs.update({"request": self.request})
         return kwargs

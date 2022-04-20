@@ -4,9 +4,10 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, CreateView
 from django.views.generic.list import ListView
 
+from apps.foods.forms import FoodConsumedCreateForm
 from apps.foods.models import FoodConsumed
 
 
@@ -59,6 +60,21 @@ class FoodConsumedDetailView(LoginRequiredMixin, DetailView):
     @staticmethod
     def rule_of_three(nutrition, grams: int, weight: int):
         return (nutrition * grams) / weight
+
+
+class FoodConsumedCreateView(LoginRequiredMixin, CreateView):
+    model = FoodConsumed
+    template_name_suffix = "_create"
+    form_class = FoodConsumedCreateForm
+    success_url = reverse_lazy("foods:food_consumed_list")
+
+    def get_form_kwargs(self):
+        """
+        Send request to form.__init__ so we can show the form with filtered foods
+        """
+        kwargs = super(FoodConsumedCreateView, self).get_form_kwargs()
+        kwargs.update({"request": self.request})
+        return kwargs
 
 
 class FoodConsumedDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):

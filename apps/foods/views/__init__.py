@@ -17,5 +17,6 @@ from apps.foods.views.food_consumed import (
     FoodConsumedListView, 
     FoodConsumedRegisteredListView, 
     FoodConsumedDetailView, 
+    FoodConsumedCreateView, 
     FoodConsumedDeleteView, 
 )

@@ -13,6 +13,7 @@ from apps.foods.views import (
     FoodConsumedListView, 
     FoodConsumedRegisteredListView, 
     FoodConsumedDetailView, 
+    FoodConsumedCreateView, 
     FoodConsumedDeleteView, 
 )
 
@@ -33,5 +34,6 @@ urlpatterns = [
     path("food_consumed/", FoodConsumedListView.as_view(), name="food_consumed_list"), 
     path("food_consumed/<slug:food_registered_slug>", FoodConsumedRegisteredListView.as_view(), name="registered_food_consumed_list"), 
     path("food_consumed/details/<int:pk>", FoodConsumedDetailView.as_view(), name="food_consumed_detail"), 
+    path("food_consumed/create/", FoodConsumedCreateView.as_view(), name="food_consumed_create"), 
     path("food_consumed/delete/<int:pk>", FoodConsumedDeleteView.as_view(), name="delete_food_consumed"), 
 ]
