@@ -15,6 +15,7 @@ Including another URLconf
 """
 import os
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include, reverse_lazy
 from django.views.generic.base import RedirectView
@@ -26,5 +27,5 @@ urlpatterns = [
     path('foods/', include('apps.foods.urls')),
 ]
 
-if os.environ.get("DJANGO_DEBUG_TOOLBAR", False):
+if settings.DJANGO_DEBUG_TOOLBAR:
     urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
