@@ -22,4 +22,4 @@ class RegisteredFood(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.food.name} - {self.food.brand} - {self.user_profile}"
+        return f"{self.food.name} - {self.food.brand}"
