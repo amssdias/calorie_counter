@@ -6,9 +6,13 @@ from django.utils.translation import gettext as _
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, CreateView
 from django.views.generic.list import ListView
+from django.db.models import DateField, Sum
+from django.contrib.postgres.aggregates import ArrayAgg, JSONBAgg
+from django.db.models.functions import Trunc
 
 from apps.foods.forms import FoodConsumedCreateForm
 from apps.foods.models import FoodConsumed
+from apps.foods.models.registered_food import RegisteredFood
 
 
 class FoodConsumedListView(LoginRequiredMixin, ListView):
@@ -16,8 +20,54 @@ class FoodConsumedListView(LoginRequiredMixin, ListView):
     paginate_by = 20
 
     def get_queryset(self):
+        # I should get the ids of the food consumed correspondent to each day
+        # Maybe get a model where we get a day with all nutrition calculated
         queryset = super().get_queryset()
+        # grouped_dates = (
+        #     queryset.filter(registered_food__user_profile__user=self.request.user)
+        #     .annotate(date=Trunc("created", "day", output_field=DateField()))
+        #     .values("date")
+        #     .annotate(registered=ArrayAgg("registered_food"))
+        #     .order_by("date")
+        # )
+
+        # days = []
+        # # q = queryset.filter(registered_food__user_profile__user=self.request.user).annotate(date=Trunc("created", "day", output_field=DateField())).values("date").annotate(registered=Subquery(RegisteredFood.objects.filter(id__in=OuterRef("registered_food")))).order_by("date").values("date", "registered")
+
+        # for day in grouped_dates:
+        #     date, registered_foods_id = day.values()
+
+        #     # Get all foods from registered foods
+        #     registered_foods = RegisteredFood.objects.filter(
+        #         id__in=registered_foods_id
+        #     ).annotate(
+        #         # calories=,
+        #         # total_fat=Sum("total_fat"),
+        #         # carbs=Sum("carbs"),
+        #         # fiber=Sum("fiber"),
+        #         # protein=Sum("protein"),
+        #         # salt=Sum("salt"),
+        #     )
+
+        #     # Calculate based on the grams of each food_consumed
+
+        #     days.append(
+        #         {
+        #             "date": date,
+        #             "calories": registered_foods["calories"],
+        #             # "total_fat": registered_foods["total_fat"],
+        #             # "carbs": registered_foods["carbs"],
+        #             # "fiber": registered_foods["fiber"],
+        #             # "protein": registered_foods["protein"],
+        #             # "salt": registered_foods["salt"],
+        #         }
+        #     )
+
         return queryset.filter(registered_food__user_profile__user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class FoodConsumedRegisteredListView(LoginRequiredMixin, ListView):

@@ -10,6 +10,13 @@
 
     <a href="{% url 'foods:food_consumed_create' %}">You ate some food? Register here. :)</a>
     <hr><hr>
+
+    {% for date in dates %}
+
+        <p>{{ date.created }}</p>
+
+    {% endfor %}
+
     
     {% for object in object_list %}
         <ul>
