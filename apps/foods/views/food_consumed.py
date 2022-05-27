@@ -13,56 +13,18 @@ from django.db.models.functions import Trunc
 from apps.foods.forms import FoodConsumedCreateForm
 from apps.foods.models import FoodConsumed
 from apps.foods.models.registered_food import RegisteredFood
+from calorie_counter.utils import rule_of_three
 
 
 class FoodConsumedListView(LoginRequiredMixin, ListView):
+    """
+    Probably delete this View
+    """
     model = FoodConsumed
     paginate_by = 20
 
     def get_queryset(self):
-        # I should get the ids of the food consumed correspondent to each day
-        # Maybe get a model where we get a day with all nutrition calculated
         queryset = super().get_queryset()
-        # grouped_dates = (
-        #     queryset.filter(registered_food__user_profile__user=self.request.user)
-        #     .annotate(date=Trunc("created", "day", output_field=DateField()))
-        #     .values("date")
-        #     .annotate(registered=ArrayAgg("registered_food"))
-        #     .order_by("date")
-        # )
-
-        # days = []
-        # # q = queryset.filter(registered_food__user_profile__user=self.request.user).annotate(date=Trunc("created", "day", output_field=DateField())).values("date").annotate(registered=Subquery(RegisteredFood.objects.filter(id__in=OuterRef("registered_food")))).order_by("date").values("date", "registered")
-
-        # for day in grouped_dates:
-        #     date, registered_foods_id = day.values()
-
-        #     # Get all foods from registered foods
-        #     registered_foods = RegisteredFood.objects.filter(
-        #         id__in=registered_foods_id
-        #     ).annotate(
-        #         # calories=,
-        #         # total_fat=Sum("total_fat"),
-        #         # carbs=Sum("carbs"),
-        #         # fiber=Sum("fiber"),
-        #         # protein=Sum("protein"),
-        #         # salt=Sum("salt"),
-        #     )
-
-        #     # Calculate based on the grams of each food_consumed
-
-        #     days.append(
-        #         {
-        #             "date": date,
-        #             "calories": registered_foods["calories"],
-        #             # "total_fat": registered_foods["total_fat"],
-        #             # "carbs": registered_foods["carbs"],
-        #             # "fiber": registered_foods["fiber"],
-        #             # "protein": registered_foods["protein"],
-        #             # "salt": registered_foods["salt"],
-        #         }
-        #     )
-
         return queryset.filter(registered_food__user_profile__user=self.request.user)
 
     def get_context_data(self, **kwargs):
@@ -99,17 +61,13 @@ class FoodConsumedDetailView(LoginRequiredMixin, DetailView):
         food_weight = food.weight
 
         return {
-            "calories": self.rule_of_three(food.calories, food_grams, food_weight),
-            "total_fat": self.rule_of_three(food.total_fat, food_grams, food_weight),
-            "carbs": self.rule_of_three(food.carbs, food_grams, food_weight),
-            "fiber": self.rule_of_three(food.fiber, food_grams, food_weight),
-            "protein": self.rule_of_three(food.protein, food_grams, food_weight),
-            "salt": self.rule_of_three(food.salt, food_grams, food_weight),
+            "calories": rule_of_three(food.calories, food_grams, food_weight),
+            "total_fat": rule_of_three(food.total_fat, food_grams, food_weight),
+            "carbs": rule_of_three(food.carbs, food_grams, food_weight),
+            "fiber": rule_of_three(food.fiber, food_grams, food_weight),
+            "protein": rule_of_three(food.protein, food_grams, food_weight),
+            "salt": rule_of_three(food.salt, food_grams, food_weight),
         }
-
-    @staticmethod
-    def rule_of_three(nutrition, grams: int, weight: int):
-        return (nutrition * grams) / weight
 
 
 class FoodConsumedCreateView(LoginRequiredMixin, CreateView):
@@ -126,10 +84,14 @@ class FoodConsumedCreateView(LoginRequiredMixin, CreateView):
         kwargs.update({"request": self.request})
         return kwargs
 
+    def form_valid(self, form):
+        form.request = self.request
+        return super().form_valid(form)
+
 
 class FoodConsumedDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = FoodConsumed
-    success_url = reverse_lazy("foods:food_consumed_list")
+    success_url = reverse_lazy("foods:food_consumed_daily_list")
     success_message = _("Food was delete")
 
     def get_success_url(self):

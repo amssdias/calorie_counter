@@ -18,3 +18,5 @@ from apps.foods.views.food_consumed import (
     FoodConsumedCreateView, 
     FoodConsumedDeleteView, 
 )
+
+from apps.foods.views.daily_user_food_stats_view import DailyUserFoodStatsView

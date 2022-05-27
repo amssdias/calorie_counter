@@ -3,19 +3,13 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from apps.accounts.models.profile import Profile
+from apps.foods.models.abstracts.food_nutrition import FoodNutrition
 
 
-class Food(models.Model):
+class Food(FoodNutrition):
     name = models.CharField(max_length=70)
     brand = models.CharField(max_length=70, null=True, blank=True)
     weight = models.IntegerField(default=100, help_text=_("g/ml"))
-    calories = models.DecimalField(max_digits=8, decimal_places=2)
-    total_fat = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-    carbs = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-    fiber = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-    protein = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-    salt = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-
     slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
     created_by = models.ForeignKey(
         Profile,
