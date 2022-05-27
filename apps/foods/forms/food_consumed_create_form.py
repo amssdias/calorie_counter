@@ -8,11 +8,12 @@ from apps.foods.models import FoodConsumed, RegisteredFood, Food
 class FoodConsumedCreateForm(forms.ModelForm):
     class Meta:
         model = FoodConsumed
-        exclude = ("created",)
+        fields = "__all__"
         widgets = {
             "registered_food": forms.Select(attrs={"class": "form-control"}),
             "grams": forms.NumberInput(attrs={"class": "form-control"}),
             "meal": forms.Select(attrs={"class": "form-control"}),
+            "created": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
         }
 
     def __init__(self, *args, **kwargs):
