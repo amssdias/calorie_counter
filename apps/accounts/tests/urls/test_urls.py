@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from django.contrib.auth.views import LogoutView
 
@@ -12,7 +12,7 @@ from apps.accounts.views import (
 )
 
 
-class TestUrls(TestCase):
+class UrlsTestCase(SimpleTestCase):
     def test_register_url_resolves(self):
         url = reverse("accounts:register")
         view_class = resolve(url).func.view_class
