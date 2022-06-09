@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 
 from apps.foods.models.daily_user_food_status import DailyUserFoodStatus
 
 
-class DailyUserFoodStatsView(ListView):
+class DailyUserFoodStatsView(LoginRequiredMixin, ListView):
     model = DailyUserFoodStatus
     template_name = "foods/daily_user_food_stats_list.html"
 

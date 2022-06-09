@@ -16,6 +16,7 @@ class UserAdminCustom(UserAdmin):
     )
     list_filter = ("is_staff", "is_superuser")
     search_fields = ("username", "email")
+    ordering = ("id",)
 
 
 admin.site.register(User, UserAdminCustom)

@@ -54,11 +54,6 @@ class TestUrls(TestCase):
         view_class = resolve(url).func.view_class
         self.assertEqual(view_class, RegisteredFoodDeleteView)
 
-    def test_list_food_consumed_url_resolves(self):
-        url = reverse("foods:food_consumed_daily_list")
-        view_class = resolve(url).func.view_class
-        self.assertEqual(view_class, DailyUserFoodStatsView)
-
     def test_list_food_consumed_registered_url_resolves(self):
         url = reverse("foods:registered_food_consumed_list", kwargs={"food_registered_slug": "slug-field"})
         view_class = resolve(url).func.view_class
@@ -74,3 +69,7 @@ class TestUrls(TestCase):
         view_class = resolve(url).func.view_class
         self.assertEqual(view_class, FoodConsumedDeleteView)
     
+    def test_list_daily_user_food_status_url_resolves(self):
+        url = reverse("foods:food_consumed_daily_list")
+        view_class = resolve(url).func.view_class
+        self.assertEqual(view_class, DailyUserFoodStatsView)

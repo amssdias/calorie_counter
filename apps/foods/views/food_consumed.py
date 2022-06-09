@@ -6,13 +6,9 @@ from django.utils.translation import gettext as _
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, CreateView
 from django.views.generic.list import ListView
-from django.db.models import DateField, Sum
-from django.contrib.postgres.aggregates import ArrayAgg, JSONBAgg
-from django.db.models.functions import Trunc
 
 from apps.foods.forms import FoodConsumedCreateForm
 from apps.foods.models import FoodConsumed
-from apps.foods.models.registered_food import RegisteredFood
 from calorie_counter.utils import rule_of_three
 
 

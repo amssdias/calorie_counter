@@ -17,6 +17,11 @@ class LoginForm(AuthenticationForm):
         label="Email", widget=forms.TextInput(attrs={"autofocus": True})
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs.update({"class": "login__form__input margin-bottom-xsmall"})
+        self.fields["password"].widget.attrs.update({"class": "login__form__input margin-bottom-xsmall"})
+
     def clean_username(self):
         email = self.cleaned_data["username"]
         try:

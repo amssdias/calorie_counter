@@ -10,7 +10,7 @@ from calorie_counter.utils.celery import task_celery
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}))
+    email = forms.CharField(widget=forms.TextInput(attrs={"class": "login__form__input margin-bottom-xsmall"}))
 
     class Meta:
         model = User
@@ -18,8 +18,8 @@ class RegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["password1"].widget.attrs.update({"class": "form-control"})
-        self.fields["password2"].widget.attrs.update({"class": "form-control"})
+        self.fields["password1"].widget.attrs.update({"class": "login__form__input margin-bottom-xsmall"})
+        self.fields["password2"].widget.attrs.update({"class": "login__form__input margin-bottom-small"})
 
     def clean(self):
         cleaned_data = super().clean()

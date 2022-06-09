@@ -6,6 +6,11 @@ from apps.accounts.models.user import User
 
 
 class CustomPasswordResetForm(PasswordResetForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["email"].widget.attrs.update({"class": "login__form__input margin-bottom-small"})
+
     def clean_email(self):
         email = self.cleaned_data["email"]
         try:
