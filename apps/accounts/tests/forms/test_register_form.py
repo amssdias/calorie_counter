@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase, RequestFactory
 from django.urls import reverse
 
@@ -6,7 +7,7 @@ from apps.accounts.models.profile import Profile
 from apps.accounts.models.user import User
 
 
-class TestRegistrationForm(TestCase):
+class RegistrationFormTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.data = {
@@ -46,12 +47,12 @@ class TestRegistrationForm(TestCase):
         user_profile = Profile.objects.filter(user=user).exists()
         self.assertTrue(user_profile)
 
-    def test_user_inactive(self):
+    def test_form_user_inactive(self):
         self.register_form.is_valid()
         user = self.register_form.save()
         self.assertFalse(user.is_active)
 
-    def test_form_user_exists(self):
+    def test_form_user_already_exists(self):
         User.objects.create_user(
             username="Test", email="test@testing.com", password="Testing123"
         )

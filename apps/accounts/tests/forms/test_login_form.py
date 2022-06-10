@@ -30,6 +30,10 @@ class LoginFormTestCase(TestCase):
         login_form = self.form(data=self.form_data)
         self.assertTrue(login_form.is_valid())
 
+    def test_form_no_data(self):
+        login_form = self.form(data={})
+        self.assertFalse(login_form.is_valid())
+
     def test_form_invalid_password(self):
         self.form_data["password"] = "wrong_password"
         login_form = self.form(data=self.form_data)
