@@ -68,3 +68,16 @@ class TestActivateAccountView(TestCase):
         response = self.client.get(url)
         self.assertTrue(self.user.is_active)
         self.assertEqual(response.status_code, 302)
+
+    def test_GET_activate_account_view_exception(self):
+        uid = urlsafe_base64_encode(force_bytes(self.user_1.pk))
+        url = reverse(
+            "accounts:activate_account",
+            kwargs={
+                "uidb64": "786",
+                "token": generate_token.make_token(self.user),
+            },
+        )
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 400)
+        self.assertTemplateUsed(response, "accounts/email/activation_failed.html")

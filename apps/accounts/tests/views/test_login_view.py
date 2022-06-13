@@ -4,7 +4,7 @@ from django.urls import reverse
 from apps.accounts.models.user import User
 
 
-class TestLoginView(TestCase):
+class LoginViewTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create_user(
@@ -16,6 +16,9 @@ class TestLoginView(TestCase):
     def test_GET_login_view(self):
         response = self.client.get(self.login_url)
         self.assertEqual(response.status_code, 200)
+
+    def test_GET_login_view_template_used(self):
+        response = self.client.get(self.login_url)
         self.assertTemplateUsed(response, "accounts/pages/login.html")
 
     def test_GET_login_view_logged_user(self):
@@ -26,12 +29,16 @@ class TestLoginView(TestCase):
             response.redirect_chain[0][0],
             reverse("accounts:profile", kwargs={"uuid": self.user.profile.uuid}),
         )
+
+    def test_GET_login_view_logged_user_template_used(self):
+        self.client.login(username="test@testing.com", password="password123")
+        response = self.client.get(self.login_url, follow=True)
         self.assertTemplateUsed(response, "accounts/pages/profile.html")
 
-    def test_POST_login_view(self):
+    def test_POST_login_view_status_code(self):
         payload = {
-            "email": "test@testing.com",
-            "password": "password123",
+            "email": self.user.email,
+            "password": self.user.password,
         }
         response = self.client.post(self.login_url, payload, follow=True)
         self.assertEqual(response.status_code, 200)
