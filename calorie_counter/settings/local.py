@@ -6,8 +6,8 @@ DEBUG = True
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("DB_ENGINE"),
-        "NAME": os.environ.get("DB_NAME"),
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("DB_NAME", "mydatabase"),
         "USER": os.environ.get("DB_USER", "user"),
         "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
         "HOST": os.environ.get("DB_HOST", "localhost"),
