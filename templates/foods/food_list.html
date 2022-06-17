@@ -1,14 +1,52 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}All foods{% endblock %}
 
 {% block content %}
-    <h1>All foods (List Foods)</h1>
+
+    <div class="section-list-foods">
+
+        <h2 class="heading-secondary margin-bottom-medium">All foods (List Foods)</h2>
+
+        <a class="btn btn-secondary" href="{% url 'foods:food_create' %}">Create new Food</a>
+
+
+        <div class="list-foods">
+            {% for object in page_obj %}
+                <div class="food margin-bottom-small">
+
+                    <div class="food__image__box">
+                        <img src="{% static 'images/banana.jpg' %}" alt="" class="food__image">
+                    </div>
+    
+                    <div class="food__details">
+                        <p class="paragraph margin-bottom-xsmall">{{ object.name }}</p>
+                        <p class="paragraph margin-bottom-small">{{ object.brand }}</p>
+                    </div>
+
+                    <div class="food__links">
+                        <a class="btn-link" href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
+                        <a class="btn-link" href="#">Register Food (TODO)</a>
+                        {% if object.created_by.user == request.user %}
+                            <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
+                        {% endif %}
+
+                    </div>
+                    
+                    
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- <h2 class="heading-secondary">All foods (List Foods)</h2> -->
 
     {% include 'components/messages.html' with messages=messages %}
 
-    <a href="{% url 'foods:food_create' %}">Create new Food</a>
+    <!-- <a href="{% url 'foods:food_create' %}">Create new Food</a> -->
 
     <hr><hr>
     <span>Order by: </span>
@@ -18,7 +56,7 @@
     <a href="{% url 'foods:list_foods' %}?ordering=protein">Protein</a>
     <hr><hr>
     
-    {% for object in page_obj %}
+    <!-- {% for object in page_obj %}
         <p>{{object}}</p>
         <a href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
         <a href="#">Register Food (TODO)</a>
@@ -26,7 +64,7 @@
             <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
         {% endif %}
         <hr>
-    {% endfor %}
+    {% endfor %} -->
 
     {% include "components/pagination.html" %}
 {% endblock %}

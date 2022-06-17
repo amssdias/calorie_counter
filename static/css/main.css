@@ -136,7 +136,12 @@ body {
   margin-bottom: 2rem;
 }
 
+.margin-bottom-medium {
+  margin-bottom: 3rem;
+}
+
 .btn {
+  border: 2px solid #0f172a;
   border-radius: 0.5rem;
   border: none;
 }
@@ -161,6 +166,27 @@ body {
 
 .btn:hover {
   cursor: pointer;
+}
+
+.btn-link {
+  text-decoration: none;
+  font-size: 1.4rem;
+  padding: 1rem 1.4rem;
+  border-radius: 40rem;
+  color: #e2e8f0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  background-color: #334155;
+}
+
+.btn-link:hover {
+  -webkit-transform: translateY(-0.4rem);
+          transform: translateY(-0.4rem);
+}
+
+.btn-link:active {
+  -webkit-transform: translateY(-0.2rem);
+          transform: translateY(-0.2rem);
 }
 
 .form {
@@ -357,5 +383,40 @@ body {
   justify-self: flex-end;
   border: 0.1rem solid rgba(255, 255, 255, 0.21);
   border-radius: 1rem;
+}
+
+.section-list-foods {
+  border: 2px solid red;
+  padding: 5rem 20rem;
+}
+
+.list-foods {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.food {
+  border: 2px solid green;
+  margin-right: 2rem;
+  padding: 1.6rem;
+}
+
+.food__image {
+  width: 35rem;
+  height: 35rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.food__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 /*# sourceMappingURL=main.css.map */

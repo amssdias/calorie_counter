@@ -1,5 +1,6 @@
 .btn {
 
+    border: 2px solid #0f172a;
     border-radius: 0.5rem;
     border: none;
 
@@ -27,4 +28,23 @@
         cursor: pointer;
     }
 
+}
+
+.btn-link {
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 1rem 1.4rem;
+    border-radius: 40rem;
+    color: #e2e8f0;
+    transition: 0.2s;
+
+    background-color: #334155;
+
+    &:hover {
+        transform: translateY(-0.4rem);
+    }
+
+    &:active {
+        transform: translateY(-0.2rem);
+    }
 }

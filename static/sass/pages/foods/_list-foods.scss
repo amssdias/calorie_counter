@@ -1,0 +1,37 @@
+.section-list-foods {
+    border: 2px solid red;
+    padding: 5rem 20rem;
+}
+
+.list-foods {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// ENTRYPOINT python manage.py runserver 0.0.0.0:8000 --settings=calorie_counter.settings.local
+.food {
+    border: 2px solid green;
+    margin-right: 2rem;
+    padding: 1.6rem;
+
+    &__image {
+
+        width: 35rem;
+        height: 35rem;
+        object-fit: cover;
+
+        &__box {
+            // padding: 2rem;
+        }
+    }
+
+    &__details {
+
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
