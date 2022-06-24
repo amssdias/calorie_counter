@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import gettext_lazy as _
@@ -31,11 +32,15 @@ class RegisterForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.is_active = False
         user.username = user.email
-        if commit:
+        if settings.EMAIL_ENABLED and settings.EMAIL_ENABLED == "True":
+            user.is_active = False
+            if commit:
+                user.save()
+                
+                current_site = get_current_site(self.request)
+                task_celery(send_email_async, user_id=user.id, domain=current_site.domain)
+            return user
+        else:
             user.save()
-
-            current_site = get_current_site(self.request)
-            task_celery(send_email_async, user_id=user.id, domain=current_site.domain)
-        return user
+            return user
