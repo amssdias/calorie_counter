@@ -20,7 +20,10 @@
     }
 
     &__form {
+        padding: 2rem 5rem;
+        display: flex;
         width: 50%;
+        flex-direction: column;
         // border: 2px solid green;
 
         &__label,

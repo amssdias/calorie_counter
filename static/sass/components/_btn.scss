@@ -3,6 +3,7 @@
     border: 2px solid #0f172a;
     border-radius: 0.5rem;
     border: none;
+    text-decoration: none;
 
     &-login {
         font-size: 1.4rem;
@@ -21,8 +22,27 @@
         &:hover {
             background-color: #475569;
         }
-    
     }
+
+    &-create {
+        font-size: 1.4rem;
+        background-color: #334155;
+        color: white;
+        padding: 1.6rem 1.8rem;
+        letter-spacing: 0.4rem;
+        text-align: center;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: #475569;
+            letter-spacing: 0.6rem;
+        }
+
+        &:active {
+            background-color: #475569d5;
+        }
+    }
+    
 
     &:hover {
         cursor: pointer;
@@ -33,18 +53,17 @@
 .btn-link {
     text-decoration: none;
     font-size: 1.4rem;
-    padding: 1rem 1.4rem;
-    border-radius: 40rem;
-    color: #e2e8f0;
+    color: black;
     transition: 0.2s;
-
-    background-color: #334155;
+    font-weight: 700;
+    border-bottom: 1px solid black;
 
     &:hover {
-        transform: translateY(-0.4rem);
+        color: rgba(0, 0, 0, 0.4)
+        // transform: translateY(-0.4rem);
     }
 
     &:active {
-        transform: translateY(-0.2rem);
+        color: rgba(0, 0, 0, 0.8)
     }
 }
