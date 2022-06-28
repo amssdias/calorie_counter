@@ -1,4 +1,4 @@
-django_app:
+calorie_counter:
   build: ./
   ports:
     - 8000:8000
