@@ -6,6 +6,9 @@ from apps.foods.models.abstracts import FoodNutrition
 
 
 class DailyUserFoodStatus(FoodNutrition):
+    """
+    Everytime the user had food to a day, we will update the total nutrition on this database.
+    """
     user_profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="daily_status")
     date = models.DateField()
 

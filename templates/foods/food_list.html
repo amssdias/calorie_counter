@@ -33,7 +33,9 @@
                     </div>
     
 
-                    <h3 class="heading-tertiary margin-bottom-xsmall">{{ object.name }}</h3>
+                    <div class="food__heading">
+                        <h3 class="heading-tertiary margin-bottom-xsmall">{{ object.name|truncatechars:43 }}</h3>
+                    </div>
 
                     
                     <div class="food__details margin-bottom-small">

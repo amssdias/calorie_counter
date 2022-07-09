@@ -29,6 +29,7 @@
 
 .list-foods {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -36,6 +37,7 @@
     // border: 2px solid green;
     margin-right: 1rem;
     padding: 1.6rem;
+    width: 37rem;
 
     &__image {
 
@@ -46,6 +48,12 @@
         &__box {
             // padding: 2rem;
         }
+    }
+
+    &__heading {
+        display: flex;
+        align-items: center;
+        height: 9%;
     }
 
     &__details {

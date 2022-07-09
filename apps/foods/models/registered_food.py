@@ -6,6 +6,9 @@ from apps.foods.models.food import Food
 
 
 class RegisteredFood(models.Model):
+    """
+    Register food is so we avoid redundant info, like getting the same food just with different meals
+    """
     user_profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, related_name="registered_foods"
     )
