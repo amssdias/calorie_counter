@@ -2,6 +2,7 @@ from .base import *
 
 LOGGING = {}
 CELERY_ENABLED = False
+EMAIL_ENABLED = "True"
 
 SECRET_KEY="django-insecure-+01rjt^m#w9_jxu!s6##q3j6fch*i5_h#_x4rn0q!zni&3qmls"
 
