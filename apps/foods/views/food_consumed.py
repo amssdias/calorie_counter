@@ -70,7 +70,7 @@ class FoodConsumedCreateView(LoginRequiredMixin, CreateView):
     model = FoodConsumed
     template_name_suffix = "_create"
     form_class = FoodConsumedCreateForm
-    success_url = reverse_lazy("foods:food_consumed_list")
+    success_url = reverse_lazy("foods:food_consumed_daily_list")
 
     def get_form_kwargs(self):
         """

@@ -44,8 +44,8 @@ class FoodConsumedCreateForm(forms.ModelForm):
     def save(self, commit=True):
         food_consumed = super().save(commit=True)
         daily_user_food_stats, created = DailyUserFoodStatus.objects.get_or_create(
-            user_profile__user=self.request.user,
-            date=self.cleaned_data["created"].date()
+            user_profile=self.request.user.profile,
+            date=self.cleaned_data["created"].date(),
         )
 
         if daily_user_food_stats:
