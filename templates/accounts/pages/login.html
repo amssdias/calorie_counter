@@ -14,7 +14,7 @@
                 <p class="heading-secondary--sub">Welcome back! Please enter your details.</p>
             </div>
 
-            <form action="{% url 'accounts:login' %}" method="POST" class="form login__form">
+            <form action="{% url 'accounts:login' %}" method="POST" class="login__form">
                 
                 {% include "components/messages.html" with messages=messages %}
                 {% csrf_token %}

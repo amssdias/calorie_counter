@@ -3,7 +3,12 @@
     padding: 5rem 20rem;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to right bottom, rgba(226, 232, 240, 1), rgba(241, 245, 249, 0.8)),url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba(226, 232, 240, 1), 
+        rgba(241, 245, 249, 0.8)
+        ), 
+        url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

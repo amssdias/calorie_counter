@@ -105,6 +105,7 @@ body {
 .heading-tertiary {
   font-size: 2.6rem;
   font-weight: 0;
+  line-height: 3rem;
 }
 
 .paragraph {
@@ -218,24 +219,56 @@ body {
 }
 
 .form {
-  padding: 2rem 5rem;
+  -webkit-box-shadow: 5px 10px 10rem 3rem #888888;
+          box-shadow: 5px 10px 10rem 3rem #888888;
+  padding: 5rem 5rem;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 2px solid red;
-  width: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 3rem 4rem;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(226, 232, 240, 0.5)), to(rgba(241, 245, 249, 0.8))), url(../images/bg-1.jpg);
+  background-image: linear-gradient(to right bottom, rgba(226, 232, 240, 0.5), rgba(241, 245, 249, 0.8)), url(../images/bg-1.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.form__detail__box {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .form__label {
   font-size: 1.4rem;
+  font-weight: 800;
 }
 
-.form__detail__box {
-  border: 2px solid green;
-  width: 45%;
+.form__input {
+  font-size: 1.4rem;
+  width: 70%;
+  background: none;
+  border: 0rem;
+  border-bottom: 2px solid #64748b;
+  text-align: right;
+}
+
+.form__input:focus {
+  border-bottom: 4px solid #64748b;
+  outline: none;
 }
 
 .nav-bar {
@@ -431,6 +464,24 @@ body {
   border-radius: 1rem;
 }
 
+.section-food-create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5rem;
+  padding: 5rem 20rem;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#e2e8f0), to(rgba(241, 245, 249, 0.8))), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+  background-image: linear-gradient(to right bottom, #e2e8f0, rgba(241, 245, 249, 0.8)), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+  height: 90vh;
+}
+
 .section-list-foods {
   padding: 5rem 20rem;
   display: -webkit-box;
@@ -469,6 +520,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -476,6 +530,7 @@ body {
 .food {
   margin-right: 1rem;
   padding: 1.6rem;
+  width: 37rem;
 }
 
 .food__image {
@@ -483,6 +538,16 @@ body {
   height: 35rem;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.food__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 9%;
 }
 
 .food__details__box {

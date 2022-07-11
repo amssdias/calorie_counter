@@ -7,12 +7,12 @@
         <div class="form__detail__box">
             <label class="form__label" for="{{ field.auto_id }}">{{ field.label }}</label>
             {{ field }}
-        </div>
+        </div>  
 
         {% include "components/error-messages.html" with errors=field.errors %}
     {% endfor %}
 
     <div class="form__submit__box">
-        <input class="btn btn-primary mt-4" type="submit" value="{{ btn_name }}">
+        <input class="btn btn-secondary" type="submit" value="{{ btn_name }}">
     </div>
 </form>

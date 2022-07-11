@@ -14,7 +14,7 @@
                 <p class="heading-secondary--sub">Haven't registered yet? Register now!</p>
             </div>
 
-            <form action="{% url 'accounts:register' %}" method="POST" class="form login__form">
+            <form action="{% url 'accounts:register' %}" method="POST" class="login__form">
                 
                 {% include "components/messages.html" with messages=messages %}
                 {% csrf_token %}

@@ -1,7 +1,8 @@
 .form {
-    border: 2px solid red;
+    // border: 2px solid red;
+    box-shadow: 5px 10px 10rem 3rem #888888;
 
-    padding: 2rem 5rem;
+    padding: 5rem 5rem;
     width: 50%;
 
     display: flex;
@@ -9,21 +10,42 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 3rem 4rem;
+
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba(226, 232, 240, 0.5), 
+        rgba(241, 245, 249, 0.8)
+        ), 
+        url(../images/bg-1.jpg);
+    background-position: center;
+    background-size: cover;
     
     &__detail__box {
-        border: 2px solid green;
-        width: 45%;
+        // border: 2px solid green;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
     }
 
     &__label {
         font-size: 1.4rem;
         font-weight: 800;
 
-        border: 1px solid black;
+        // border: 1px solid black;
     }
 
     &__input {
-        width: 50%;
+        font-size: 1.4rem;
+        width: 70%;
+        background: none;
+        border: 0rem;
+        border-bottom: 2px solid #64748b;
+        text-align: right;
+
+        &:focus {
+            border-bottom: 4px solid #64748b;
+            outline: none;
+        }
     }
 
     &__submit__box {

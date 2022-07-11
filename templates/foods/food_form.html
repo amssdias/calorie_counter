@@ -4,9 +4,13 @@
 {% block title %}Create food{% endblock %}
 
 {% block content %}
-    <h1>Create new food (Create view)</h1>
 
-    {% include 'components/form.html' with form=form btn_name='Create' %}
+    <div class="section-food-create">
+        <h2 class="heading-secondary">Create food (Create view)</h2>
+        
+        {% include 'components/form.html' with form=form btn_name='Create' %}
+    </div>
+
 
 
 {% endblock %}
