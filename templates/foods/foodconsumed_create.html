@@ -4,9 +4,12 @@
 {% block title %}Create food{% endblock %}
 
 {% block content %}
-    <h1>Register how much you ate</h1>
 
-    {% include 'components/form.html' with form=form btn_name='Register' %}
+    <div class="section-food-register">
+        <h2 class="heading-secondary">Register how much you ate</h2>
+        
+        {% include 'components/form.html' with form=form btn_name='Register' %}
+    </div>
 
 
 {% endblock %}

@@ -7,6 +7,7 @@
 
 @import "components/btn";
 @import "components/form";
+@import "components/table";
 
 @import "layout/footer";
 @import "layout/navigation";
@@ -14,6 +15,8 @@
 
 @import "pages/accounts/login";
 @import "pages/accounts/profile";
-@import "pages/foods/food_create";
+
+@import "pages/foods/food_create_and_register";
+@import "pages/foods/list_foods_consumed";
 @import "pages/foods/list-foods";
 @import "pages/foods/registered-foods";

@@ -5,27 +5,42 @@
 
 {% block content %}
     <div class="section-list-foods-consumed">
-        <h1>List foods from everyday</h1>
+        <h2 class="heading-secondary margin-bottom-large">List foods from everyday</h2>
 
         {% include 'components/messages.html' with messages=messages %}
     
-        <a href="{% url 'foods:food_consumed_create' %}">You ate some food? Register here. :)</a>
-    
-        {% for object in object_list %}
-    
-            <ul>
-                <li>Date: {{ object.date }}</li>
-                <li>Calories: {{ object.calories|floatformat }}</li>
-                <li>Total fat: {{ object.total_fat|floatformat }}</li>
-                <li>Carbs: {{ object.carbs|floatformat }}</li>
-                <li>Fiber: {{ object.fiber|floatformat }}</li>
-                <li>Protein: {{ object.protein|floatformat }}</li>
-                <li>Salt: {{ object.salt|floatformat }}</li>
-            </ul>
-    
-            <hr><hr>
-    
-        {% endfor %}
+        <a class="btn btn-create margin-bottom-medium" href="{% url 'foods:food_consumed_create' %}">You ate some food? Register here. :)</a>
+
+        <div class="table-box">
+            <table class="table-list-consumed-foods">
+               <thead>
+                  <tr>
+                     <th>Day</th>
+                     <th>Calories</th>
+                     <th>Total fat</th>
+                     <th>Carbs</th>
+                     <th>Fiber</th>
+                     <th>Protein</th>
+                     <th>Salt</th>
+                  </tr>
+               </thead>
+               <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.date }}</td>
+                        <td>{{ object.calories|floatformat }}</td>
+                        <td>{{ object.total_fat|floatformat }}</td>
+                        <td>{{ object.carbs|floatformat }}</td>
+                        <td>{{ object.fiber|floatformat }}</td>
+                        <td>{{ object.protein|floatformat }}</td>
+                        <td>{{ object.salt|floatformat }}</td>
+                    </tr>
+                {% endfor %}
+             </tbody>
+            </table>
+         </div>
+
+
     </div>
 
 {% endblock %}

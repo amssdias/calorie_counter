@@ -271,6 +271,37 @@ body {
   outline: none;
 }
 
+.table-list-consumed-foods {
+  border-collapse: collapse;
+  margin: 2.5rem 0rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+
+.table-list-consumed-foods thead tr {
+  background-color: #475569;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-list-consumed-foods th,
+.table-list-consumed-foods td {
+  padding: 2.5rem 1.5rem;
+}
+
+.table-list-consumed-foods tbody tr {
+  border-bottom: 1px solid #ffffff;
+}
+
+.table-list-consumed-foods tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.table-list-consumed-foods tbody tr:nth-of-type(odd) {
+  background-color: rgba(226, 232, 240, 0.6);
+}
+
 .nav-bar {
   height: 10vh;
   padding: 0rem 6rem;
@@ -464,7 +495,8 @@ body {
   border-radius: 1rem;
 }
 
-.section-food-create {
+.section-food-create,
+.section-food-register {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -480,6 +512,24 @@ body {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#e2e8f0), to(rgba(241, 245, 249, 0.8))), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
   background-image: linear-gradient(to right bottom, #e2e8f0, rgba(241, 245, 249, 0.8)), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
   height: 90vh;
+}
+
+.section-list-foods-consumed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5rem 20rem;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#e2e8f0), to(rgba(241, 245, 249, 0.8))), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+  background-image: linear-gradient(to right bottom, #e2e8f0, rgba(241, 245, 249, 0.8)), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 90vh;
 }
 
 .section-list-foods {
