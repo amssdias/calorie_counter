@@ -40,6 +40,11 @@ class FoodConsumedRegisteredListView(LoginRequiredMixin, ListView):
             registered_food__slug=registered_food_slug,
         )
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["food_name"] = context["object_list"][0].registered_food.food
+        return context
+
 
 class FoodConsumedDetailView(LoginRequiredMixin, DetailView):
     model = FoodConsumed
