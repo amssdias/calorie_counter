@@ -1,5 +1,4 @@
 .section-registered-foods {
-    // border: 2px solid red;
     padding: 5rem 20rem;
     
     display: flex;
@@ -17,17 +16,14 @@
 .list-registered-foods {
     margin: 0rem -10rem;
     padding: 2rem 0rem;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 5rem 2rem;
-    // border: 2px solid green;
-
 }
 
 .registered-food {
-
-    // border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 2rem 2rem 0rem 0rem;
     background-color: rgba(241, 245, 249, 0.8);
     box-shadow: 0.2rem -0.4rem 1rem 1rem rgba(0, 0, 0, 0.2);
@@ -53,13 +49,15 @@
 
     &__details {
         padding: 1rem 1.6rem;
+
         color: black;
+
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
 
         &__names {
-            font-size: 1.4rem;
+            font-size: $default-font-size;
             color: black;
         }
 

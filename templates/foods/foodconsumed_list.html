@@ -4,14 +4,44 @@
 {% block title %}Food consumed{% endblock %}
 
 {% block content %}
-    <h1>Food Consumed</h1>
+
+    <div class="section-list-foods-consumed">
+        
+        <h2 class="heading-secondary margin-bottom-large">{{ food_name }}</h2>
+        
+        <a class="btn btn-create margin-bottom-large" href="{% url 'foods:food_consumed_create' %}">You ate some food? Register here. :)</a>
+
+
+        <section class="list-food-consumed">
+            {% for object in object_list %}
+                <div class="list-food-consumed__box margin-bottom-medium">
+                    <a href="{% url 'foods:food_consumed_detail' pk=object.id %}" class="list-food-consumed__box-info">
+                        <span>{{ object.created }}</span>
+                        <span>{{ object.get_meal_display }}</span>
+                        <span>{{ object.grams }} g</span>
+                    </a>
+                    <a href="{% url 'foods:delete_food_consumed' pk=object.id %}" class="list-food-consumed__box-delete">Delete food</a>
+                </div>
+                 <!--<ul>
+                    <li>{{ object.registered_food.food }}</li> 
+                    <li>{{ object.grams }} g</li>
+                    <li>{{ object.get_meal_display }}</li>
+                    <li>{{ object.created }}</li>
+                </ul>
+                <a href="{% url 'foods:food_consumed_detail' pk=object.id %}">Check details of consumed food</a><br>
+                <a href="{% url 'foods:delete_food_consumed' pk=object.id %}">Delete food</a>
+                <hr><br>-->
+            {% endfor %}
+
+            {% include "components/pagination.html" %}
+        </section>
+
+    </div>
 
     {% include 'components/messages.html' with messages=messages %}
-
-    <a href="{% url 'foods:food_consumed_create' %}">You ate some food? Register here. :)</a>
     <hr><hr>
     
-    {% for object in object_list %}
+    <!-- {% for object in object_list %}
         <ul>
             <li>{{ object.registered_food.food }}</li>
             <li>{{ object.grams }} g</li>
@@ -24,7 +54,7 @@
         <hr>
     {% endfor %}
 
-    {% include "components/pagination.html" %}
+    {% include "components/pagination.html" %} -->
 
     <br>
 {% endblock %}

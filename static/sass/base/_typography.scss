@@ -43,8 +43,8 @@ body {
     font-size: 1.2rem;
 
     &-error {
-        color: #64748b;
-        border-bottom: 2px solid #64748b;
+        color: $color-slate-dark;
+        border-bottom: 2px solid $color-slate-dark;
     }
 
     &-info {

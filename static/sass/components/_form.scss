@@ -39,11 +39,11 @@
         width: 70%;
         background: none;
         border: 0rem;
-        border-bottom: 2px solid #64748b;
+        border-bottom: 2px solid $color-slate-dark;
         text-align: right;
 
         &:focus {
-            border-bottom: 4px solid #64748b;
+            border-bottom: 4px solid $color-slate-dark;
             outline: none;
         }
     }
