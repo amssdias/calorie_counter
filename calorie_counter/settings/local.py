@@ -15,6 +15,9 @@ DATABASES = {
     }
 }
 
+# Email (avoid sending emails)
+EMAIL_ENABLED = False
+
 # Celery
 CELERY_ENABLED = False
 
@@ -35,11 +38,10 @@ SECURE_SSL_REDIRECT = False
 # LOGS
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": True,
+    "disable_existing_loggers": False,
     "loggers": {
         "django": {
             "handlers": ["file_info", "file_warning", "file_error"],
-            "level": "INFO",
         },
     },
     "handlers": {
@@ -49,7 +51,7 @@ LOGGING = {
             "formatter": "simple_format",
         },
         "file_info": {
-            "level": "DEBUG",
+            "level": "INFO",
             "class": "logging.FileHandler",
             "filename": "./logs/info.log",
             "formatter": "simple_format",
