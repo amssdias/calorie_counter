@@ -76,10 +76,10 @@ If any doubts here's a link to some more explanations: [Pipenv](https://pipenv-f
 
 ## :mag_right: Usage
 
- [![Docker](https://i.imgur.com/VyjCJuz.png)](https://www.docker.com/) 
-
+ [![Docker](https://i.imgur.com/VyjCJuz.png)](https://www.docker.com/)
 <br>
-Install [docker][docker-link] here.
+
+Install [Docker][docker-link] here.
 
 Once installed all you gotta do is open your terminal on the project folder and run
 ```
