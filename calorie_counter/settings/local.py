@@ -16,12 +16,13 @@ DATABASES = {
 }
 
 # Email (avoid sending emails)
-EMAIL_ENABLED = False
+EMAIL_ENABLED = True
 
 # Celery
 CELERY_ENABLED = False
 
 # DJANGO DEBUG TOOLBAR
+DJANGO_DEBUG_TOOLBAR = False
 # INSTALLED_APPS.append("debug_toolbar")
 # MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
 # INTERNAL_IPS = ["127.0.0.1"]
