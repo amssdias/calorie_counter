@@ -33,7 +33,7 @@ class RegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.username = user.email
-        if settings.EMAIL_ENABLED == "True":
+        if settings.EMAIL_ENABLED:
             user.is_active = False
             if commit:
                 user.save()

@@ -161,14 +161,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.User'
 
 # EMAIL SETTINGS
-EMAIL_ENABLED = os.environ.get("EMAIL_ENABLED", "True")
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_PORT = os.environ.get("EMAIL_PORT")
-EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "abcd")
+
+EMAIL_ENABLED = True
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "localhost")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_API_KEY")
 DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # AUTHENTICATION BACKENDS
 AUTHENTICATION_BACKENDS = [
