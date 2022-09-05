@@ -12,7 +12,7 @@
 <h1 align=center>Calorie Counter</h1>
 
 
-The calorie counter app is a great way to keep track of all the calories you are burning every day. The user can add all the food they are eating and the app will count the calories. We can further add a function for users to add their daily workout sessions, running and jogging to calculate how much calories they have burned.
+The calorie counter app is a great way to keep track of all the calories you are burning every day. The user can add all the food they are eating, and the app will count the calories. We can further add a function for users to add their daily workout sessions, running and jogging to calculate how many calories they have burned.
 
 This project was made before by me, but I decided to do a better version of it, with clean code and better functionality. You can check it here: [HealthGain](https://github.com/amssdias/healthgain).
 
@@ -71,7 +71,7 @@ Fill up the "_**.env.example**_" file, so users can receive activation links and
     python manage.py migrate
     ```
 
-If any doubts here's a link to some more explanations: [Pipenv](https://pipenv-fork.readthedocs.io/en/latest/basics.html)
+If any doubts, here's a link to some more explanations: [Pipenv](https://pipenv-fork.readthedocs.io/en/latest/basics.html)
 
 
 ## :mag_right: Usage
@@ -81,7 +81,7 @@ If any doubts here's a link to some more explanations: [Pipenv](https://pipenv-f
 
 Install [Docker][docker-link] here.
 
-Once installed all you gotta do is open your terminal on the project folder and run
+Once installed, all you have to do is open your terminal on the project folder and run
 ```
 docker-compose up
 ```
