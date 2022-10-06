@@ -15,6 +15,10 @@ class CustomPasswordResetForm(PasswordResetForm):
         email = self.cleaned_data["email"]
         try:
             user = User.objects.get(email=email)
+
+            if not user.is_active:
+                raise forms.ValidationError(_("Email is not active, try to login first with a random password."))
+
         except User.DoesNotExist:
             raise forms.ValidationError(_("Email is not registered. Register first."))
         else:
