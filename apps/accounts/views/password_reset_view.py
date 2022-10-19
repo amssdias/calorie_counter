@@ -12,6 +12,7 @@ class CustomPasswordResetView(PasswordResetView):
     form_class = CustomPasswordResetForm
     email_template_name = "accounts/password-reset/password_reset_email.html"
     template_name = "accounts/password-reset/password_reset_form.html"
+    html_email_template_name = "accounts/password-reset/password_reset_email.html"
     success_url = reverse_lazy("accounts:login")
 
     def form_invalid(self, form):
