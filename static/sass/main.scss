@@ -13,8 +13,10 @@
 @import "layout/navigation";
 @import "layout/header";
 
+@import "pages/accounts/email";
 @import "pages/accounts/login";
 @import "pages/accounts/profile";
+@import "pages/accounts/set_password";
 
 @import "pages/foods/food_consumed_list";
 @import "pages/foods/food_create_and_register";

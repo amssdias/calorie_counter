@@ -1,7 +1,8 @@
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 from django.urls import reverse_lazy
 
-from apps.accounts.forms.password_reset_form import CustomPasswordResetForm
+from apps.accounts.forms import CustomPasswordResetForm
+from apps.accounts.forms import CustomSetPasswordForm
 
 
 class CustomPasswordResetView(PasswordResetView):
@@ -27,4 +28,5 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     """
 
     template_name = "accounts/password-reset/password_reset_confirm.html"
+    form_class = CustomSetPasswordForm
     success_url = reverse_lazy("accounts:login")

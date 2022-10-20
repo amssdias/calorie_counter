@@ -85,7 +85,7 @@ body {
 }
 
 .heading-primary {
-  font-size: 3.5rem;
+  font-size: 4rem;
 }
 
 .heading-secondary {
@@ -167,6 +167,7 @@ body {
 }
 
 .btn-secondary {
+  font-size: 1.2rem;
   background-color: #334155;
   color: white;
   padding: 1.6rem 1.8rem;
@@ -236,8 +237,8 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 3rem 4rem;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(226, 232, 240, 0.5)), to(rgba(241, 245, 249, 0.8))), url(../images/bg-1.jpg);
-  background-image: linear-gradient(to right bottom, rgba(226, 232, 240, 0.5), rgba(241, 245, 249, 0.8)), url(../images/bg-1.jpg);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(226, 232, 240, 0.7)), to(rgba(241, 245, 249, 0.9))), url(../images/bg-1.jpg);
+  background-image: linear-gradient(to right bottom, rgba(226, 232, 240, 0.7), rgba(241, 245, 249, 0.9)), url(../images/bg-1.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -258,16 +259,19 @@ body {
 }
 
 .form__input {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   width: 70%;
   background: none;
   border: 0rem;
+  border-top: 1px solid transparent;
   border-bottom: 2px solid #64748b;
-  text-align: right;
+  text-align: center;
+  outline: none;
 }
 
 .form__input:focus {
-  border-bottom: 4px solid #64748b;
+  border-top: 0px;
+  border-bottom: 3px solid #64748b;
   outline: none;
 }
 
@@ -321,6 +325,65 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   color: white;
+}
+
+.header-email {
+  text-align: center;
+  font-size: 2.6rem;
+}
+
+.body-email {
+  background-color: #f1f5f9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10rem;
+}
+
+.heading-email {
+  color: #0f172a;
+}
+
+.content-email {
+  background-color: #fff;
+  padding: 10rem 12rem;
+}
+
+.content-email * {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.content-email__text {
+  height: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content-email__help-text {
+  font-size: 1.2rem;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .section-login {
@@ -492,6 +555,27 @@ body {
   justify-self: flex-end;
   border: 0.1rem solid rgba(255, 255, 255, 0.21);
   border-radius: 1rem;
+}
+
+.section-set-password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(226, 232, 240, 0.7)), to(rgba(241, 245, 249, 0.9))), url(../images/bg-1.jpg);
+  background-image: linear-gradient(to right bottom, rgba(226, 232, 240, 0.7), rgba(241, 245, 249, 0.9)), url(../images/bg-1.jpg);
+  background-size: cover;
+  height: 90vh;
+  padding: 10rem 0rem;
 }
 
 .list-food-consumed__box {
