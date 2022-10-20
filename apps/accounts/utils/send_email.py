@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -35,11 +35,11 @@ def send_email(user_id, domain):
         },
     )
 
-    email = EmailMessage(
+    email = EmailMultiAlternatives(
         subject=email_subject,
-        body=message,
         to=[user.email],
     )
+    email.attach_alternative(message, 'text/html')
 
     try:
         email.send()

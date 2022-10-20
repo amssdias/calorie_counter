@@ -1,9 +1,20 @@
+{% extends "base_email.html" %}
 {% load i18n %}
-{% autoescape off %}
 
-Hi {{ user.username }}
-Please click the link below to activate your account.
+{% block header %}Activate your account{% endblock %}
 
-http://{{ domain }}{% url 'accounts:activate_account' uidb64=uid token=token %}
+{% block text %}
+    <b>Hi 
+        {% if user.first_name %}
+            {{ user.first_name }}
+        {% elif user.username %}
+            {{ user.username }}
+        {% endif %}
+    </b> <br>
+    
+    Please click the link below to activate your account.
+{% endblock text %}
 
-{% endautoescape %}
+{% block btn %}
+    <a class="btn" href="http://{{ domain }}{% url 'accounts:activate_account' uidb64=uid token=token %}">Activate your account</a>
+{% endblock btn %}
