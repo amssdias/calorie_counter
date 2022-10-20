@@ -41,13 +41,17 @@
         border: 0rem;
         border-top: 1px solid transparent;
         border-bottom: 2px solid $color-slate-dark;
-        text-align: center;
+        text-align: right;
         outline: none;
 
         &:focus {
             border-top: 0px;
             border-bottom: 3px solid $color-slate-dark;
             outline: none;
+        }
+
+        &-text-align-center {
+            text-align: center;
         }
     }
 
