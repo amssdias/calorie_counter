@@ -1,10 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.shortcuts import redirect, get_object_or_404
+from django.views import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.translation import gettext as _
 
 from apps.foods.forms import FoodCreateForm
@@ -68,3 +70,14 @@ class FoodCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class FoodDeleteView(LoginRequiredMixin, DeleteView):
     model = Food
     success_url = reverse_lazy("foods:list_foods")
+
+
+class SessionFoodView(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        food = self.get_object()
+        self.request.session["food"] = food.id
+        return redirect(reverse("foods:food_consumed_create"))
+
+    def get_object(self):
+        return get_object_or_404(Food, pk=self.kwargs["pk"])

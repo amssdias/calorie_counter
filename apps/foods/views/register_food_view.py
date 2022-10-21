@@ -1,12 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
 
 from apps.foods.models import RegisteredFood
 
 
-class RegistereFoodListView(LoginRequiredMixin, ListView):
+class RegisteredFoodListView(LoginRequiredMixin, ListView):
     model = RegisteredFood
     paginate_by = 10
 

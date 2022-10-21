@@ -4,10 +4,11 @@ from apps.foods.views.foods_view import (
     FoodUpdateView,
     FoodCreateView,
     FoodDeleteView,
+    SessionFoodView,
 )
 
 from apps.foods.views.register_food_view import (
-    RegistereFoodListView,
+    RegisteredFoodListView,
     RegisteredFoodDeleteView, 
 )
 

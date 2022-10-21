@@ -75,10 +75,10 @@
                     </div>
 
                     <div class="food__links">
-                        <a class="btn-link margin-bottom-xsmall" href="{% url 'foods:food_details' slug=object.slug %}">More details</a>
-                        <a class="btn-link" href="#">Register Food (TODO)</a>
+                        <!-- <a class="btn-link margin-bottom-xsmall" href="">More details</a> -->
+                        <a class="btn-link" href="{% url 'foods:food_session' pk=object.id %}">Register Food</a>
                         {% if object.created_by.user == request.user %}
-                            <a href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
+                            <a class="btn-link" href="{% url 'foods:food_delete' slug=object.slug %}">Delete Food</a>
                         {% endif %}
 
                     </div>

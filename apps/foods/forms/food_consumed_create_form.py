@@ -21,9 +21,15 @@ class FoodConsumedCreateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
         super().__init__(*args, **kwargs)
+        self.fields["registered_food"].label = "Food"
         self.fields["registered_food"].queryset = Food.objects.filter(
             Q(created_by=self.request.user.profile) | Q(created_by__isnull=True)
         )
+
+        food_id = self.request.session.get("food")
+        if food_id:
+            self.fields["registered_food"].initial = Food.objects.get(pk=food_id)
+            self.request.session.pop("food")
 
     def clean_registered_food(self):
         user_profile = self.request.user.profile
