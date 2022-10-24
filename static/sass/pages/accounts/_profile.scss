@@ -4,6 +4,14 @@
     
     background-image: url(../images/bg-1.jpg);
     background-size: cover;
+
+    @include respond(tab-land) {
+        padding: 0rem 10rem;
+    }
+
+    @include respond(tab-port) {
+        padding: 0rem 0rem;
+    }
 }
 
 .profile {
@@ -19,9 +27,14 @@
         margin: 0 auto;
         width: 70%;
 
-        &__title {
-
+        @include respond(tab-port) {
+            width: 85%;
         }
+
+        @include respond(phone) {
+            flex-direction: column;
+        }
+
     }
 
     &__image {
@@ -45,6 +58,12 @@
             display: flex;
             justify-content: space-between;
             border-bottom: 0.1rem solid $color-slate-dark;
+
+            @include respond(tab-port) {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
         }
 
         &__label {
@@ -60,6 +79,11 @@
             justify-self: flex-end;
             border: 0.1rem solid rgba(255, 255, 255, 0.21);
             border-radius: 1rem;
+
+            @include respond(tab-port) {
+                margin-top: 2rem;
+                width: 100%;
+            }
         }
     }
 }

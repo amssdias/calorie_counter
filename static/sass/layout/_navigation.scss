@@ -6,10 +6,20 @@
     justify-content: space-around;
     align-items: center;
 
+    @include respond(tab-land) {
+        padding: 0rem 3rem;
+        flex-wrap: wrap;
+    }
+
+    @include respond(phone) {
+        padding: 0rem 3rem;
+    }
+
     &__link {
         font-size: 1.4rem;
         text-decoration: none;
         text-transform: uppercase;
         color: white;
+        padding: 1rem;
     }
 }

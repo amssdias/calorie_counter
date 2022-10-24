@@ -3,7 +3,7 @@
     box-shadow: 5px 10px 10rem 3rem #888888;
 
     padding: 5rem 5rem;
-    width: 50%;
+    width: 80%;
 
     display: flex;
     flex-direction: column;
@@ -19,18 +19,31 @@
         url(../images/bg-1.jpg);
     background-position: center;
     background-size: cover;
+
+    @include respond(phone) {
+        padding: 5rem 0rem;
+    }
     
     &__detail__box {
         // border: 2px solid green;
         width: 90%;
         display: flex;
         justify-content: space-between;
+
+        @include respond(phone) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__label {
         font-size: 1.4rem;
         font-weight: 800;
 
+        @include respond(phone) {
+            margin-bottom: 2rem;
+        }
         // border: 1px solid black;
     }
 
@@ -43,6 +56,10 @@
         border-bottom: 2px solid $color-slate-dark;
         text-align: right;
         outline: none;
+
+        @include respond(phone) {
+            text-align: center;
+        }
 
         &:focus {
             border-top: 0px;
