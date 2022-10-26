@@ -169,6 +169,10 @@ body {
   margin-bottom: 4rem;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 .btn {
   border: 2px solid #0f172a;
   border-radius: 0.5rem;
@@ -215,6 +219,17 @@ body {
   background-color: #475569d5;
 }
 
+.btn-delete {
+  font-size: 1.2rem;
+  background-color: #991b1b;
+  color: white;
+  padding: 1.6rem 1.8rem;
+}
+
+.btn-delete:hover {
+  background-color: #7f1d1d;
+}
+
 .btn:hover {
   cursor: pointer;
 }
@@ -235,6 +250,13 @@ body {
 
 .btn-link:active {
   color: rgba(0, 0, 0, 0.8);
+}
+
+.btn-delete {
+  border: 2px solid #0f172a;
+  border-radius: 0.5rem;
+  border: none;
+  text-decoration: none;
 }
 
 .form {
@@ -330,6 +352,18 @@ body {
   text-align: center;
 }
 
+.form-delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .table-list-consumed-foods {
   border-collapse: collapse;
   margin: 2.5rem 0rem;
@@ -362,7 +396,7 @@ body {
 }
 
 .nav-bar {
-  height: 10vh;
+  min-height: 10vh;
   padding: 0rem 6rem;
   background-color: #1e293b;
   display: -webkit-box;
@@ -386,6 +420,9 @@ body {
 @media only screen and (max-width: 37.5em) {
   .nav-bar {
     padding: 0rem 3rem;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
 }
 
@@ -394,7 +431,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   color: white;
-  padding: 1rem;
+  padding: 1.2rem;
 }
 
 .header-email {
@@ -748,6 +785,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 2rem;
   height: 6rem;
   border-radius: 40rem;
   -webkit-transition: 0.2s;
@@ -769,9 +807,21 @@ body {
       -ms-flex-align: center;
           align-items: center;
   height: 100%;
-  width: 80%;
+  width: 75%;
   font-size: 1.6rem;
   color: #1e293b;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .list-food-consumed__box-info span:nth-child(2), .list-food-consumed__box-info span:nth-child(3) {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .list-food-consumed__box-info {
+    width: 40%;
+  }
 }
 
 .list-food-consumed__box-delete {
@@ -782,6 +832,12 @@ body {
   color: #fff;
   font-size: 1.2rem;
   letter-spacing: 0.2rem;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .list-food-consumed__box-delete {
+    padding: 0.6rem 1.2rem;
+  }
 }
 
 .list-food-consumed__box:hover {
@@ -816,6 +872,36 @@ body {
   }
 }
 
+.section-delete {
+  padding: 5rem 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#e2e8f0), to(rgba(241, 245, 249, 0.8))), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+  background-image: linear-gradient(to right bottom, #e2e8f0, rgba(241, 245, 249, 0.8)), url(https://imgix.bustle.com/uploads/image/2020/5/19/f2207691-4c42-42a7-a670-f35d9d21af58-gettyimages-1173390260.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 90vh;
+}
+
+@media only screen and (max-width: 75em) {
+  .section-delete {
+    padding: 5rem 10rem;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  .section-delete {
+    padding: 5rem 5rem;
+  }
+}
+
 .section-list-foods-consumed {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -832,6 +918,24 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 90vh;
+}
+
+@media only screen and (max-width: 75em) {
+  .section-list-foods-consumed {
+    padding: 5rem 15rem;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  .section-list-foods-consumed {
+    padding: 5rem 7rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .section-list-foods-consumed {
+    padding: 5rem 5rem;
+  }
 }
 
 .section-list-foods {
@@ -889,7 +993,7 @@ body {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 @media only screen and (max-width: 56.25em) {
@@ -913,7 +1017,7 @@ body {
 
 @media only screen and (max-width: 37.5em) {
   .food {
-    width: 17rem;
+    width: 100%;
   }
 }
 
@@ -926,15 +1030,26 @@ body {
 
 @media only screen and (max-width: 75em) {
   .food__image {
-    width: 20rem;
-    height: 20rem;
+    width: 25rem;
+    height: 25rem;
   }
 }
 
 @media only screen and (max-width: 37.5em) {
   .food__image {
-    width: 15rem;
-    height: 15rem;
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .food__image__box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -945,9 +1060,18 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 9%;
-  overflow: scroll;
-  white-space: nowrap;
+  min-height: 9%;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .food__heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .food__details__box {
@@ -973,6 +1097,18 @@ body {
           align-items: flex-start;
 }
 
+@media only screen and (max-width: 37.5em) {
+  .food__links {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
 .section-registered-foods {
   padding: 5rem 20rem;
   display: -webkit-box;
@@ -991,6 +1127,18 @@ body {
   min-height: 90vh;
 }
 
+@media only screen and (max-width: 56.25em) {
+  .section-registered-foods {
+    padding: 5rem 15rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .section-registered-foods {
+    padding: 5rem 7rem;
+  }
+}
+
 .list-registered-foods {
   margin: 0rem -10rem;
   padding: 2rem 0rem;
@@ -1002,6 +1150,12 @@ body {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   gap: 5rem 2rem;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .list-registered-foods {
+    padding: 2rem 3rem;
+  }
 }
 
 .registered-food {

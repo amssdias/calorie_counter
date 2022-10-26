@@ -4,19 +4,29 @@
 {% block title %}Delete food{% endblock %}
 
 {% block content %}
-    <h1>Delete food (DELETE view)</h1>
 
-    <h2>Are you sure you want to delete {{ object }}?</h2>
+    <div class="section-delete">
+        
+        <h2 class="heading-secondary margin-bottom-large">Are you sure you want to delete?</h2>
+        <h3 class="heading-tertiary text-align-center margin-bottom-large">{{ object }}</h3>
 
-    {% if object.registered_by_users.all %}
-        <h1>Hey you have registered this food, if you delete, it will delete all registered foods.</h1>
+        {% if object.registered_by_users.all %}
+            <h1>Hey you have registered this food, if you delete, it will delete all registered foods.</h1>
 
-        {% for food_consumed in object.registered_by_users.all %}
-            <p>{{ food_consumed.food.name }}</p>
-        {% endfor %}
-    {% endif %}
-    
-    {% include 'components/form.html' with form=form btn_name='Delete' %}
+            {% for food_consumed in object.registered_by_users.all %}
+                <p>{{ food_consumed.food.name }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form action="" method="post" class="form-delete">
+            {% csrf_token %}
+
+            <input class="btn btn-delete" type="submit" value="Delete">
+        </form>
+
+        {{form}}
+
+    </div>
 
 
 {% endblock %}

@@ -43,6 +43,17 @@
             background-color: #475569d5;
         }
     }
+
+    &-delete {
+        font-size: 1.2rem;
+        background-color: #991b1b;
+        color: white;
+        padding: 1.6rem 1.8rem;
+
+        &:hover {
+            background-color: #7f1d1d;
+        }
+    }
     
 
     &:hover {
@@ -67,4 +78,11 @@
     &:active {
         color: rgba(0, 0, 0, 0.8)
     }
+}
+
+.btn-delete {
+    border: 2px solid $color-slate-dark-5;
+    border-radius: 0.5rem;
+    border: none;
+    text-decoration: none;
 }

@@ -1,5 +1,5 @@
 .nav-bar {
-    height: 10vh;
+    min-height: 10vh;
     padding: 0rem 6rem;
     background-color: $color-slate-dark-4;
     display: flex;
@@ -13,6 +13,7 @@
 
     @include respond(phone) {
         padding: 0rem 3rem;
+        justify-content: space-evenly;
     }
 
     &__link {
@@ -20,6 +21,6 @@
         text-decoration: none;
         text-transform: uppercase;
         color: white;
-        padding: 1rem;
+        padding: 1.2rem;
     }
 }

@@ -1,9 +1,7 @@
-.section-list-foods-consumed {
+.section-delete {
+    padding: 5rem 20rem;
     display: flex;
     flex-direction: column;
-
-    padding: 5rem 20rem;
-
     background-image: linear-gradient(
         to right bottom, 
         rgba(226, 232, 240, 1), 
@@ -18,14 +16,10 @@
     min-height: 90vh;
 
     @include respond(tab-land) {
-        padding: 5rem 15rem;
-    }
-    
-    @include respond(tab-port) {
-        padding: 5rem 7rem;
+        padding: 5rem 10rem;
     }
 
-    @include respond(phone) {
+    @include respond(tab-port) {
         padding: 5rem 5rem;
     }
 }

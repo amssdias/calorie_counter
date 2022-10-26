@@ -22,15 +22,6 @@
                     </a>
                     <a href="{% url 'foods:delete_food_consumed' pk=object.id %}" class="list-food-consumed__box-delete">Delete food</a>
                 </div>
-                 <!--<ul>
-                    <li>{{ object.registered_food.food }}</li> 
-                    <li>{{ object.grams }} g</li>
-                    <li>{{ object.get_meal_display }}</li>
-                    <li>{{ object.created }}</li>
-                </ul>
-                <a href="{% url 'foods:food_consumed_detail' pk=object.id %}">Check details of consumed food</a><br>
-                <a href="{% url 'foods:delete_food_consumed' pk=object.id %}">Delete food</a>
-                <hr><br>-->
             {% endfor %}
 
             {% include "components/pagination.html" %}
@@ -40,21 +31,6 @@
 
     {% include 'components/messages.html' with messages=messages %}
     <hr><hr>
-    
-    <!-- {% for object in object_list %}
-        <ul>
-            <li>{{ object.registered_food.food }}</li>
-            <li>{{ object.grams }} g</li>
-            <li>{{ object.get_meal_display }}</li>
-            <li>{{ object.created }}</li>
-        </ul>
-        <p>{{ object }}</p>
-        <a href="{% url 'foods:food_consumed_detail' pk=object.id %}">Check details of consumed food</a>
-        <a href="{% url 'foods:delete_food_consumed' pk=object.id %}">Delete food</a>
-        <hr>
-    {% endfor %}
-
-    {% include "components/pagination.html" %} -->
 
     <br>
 {% endblock %}

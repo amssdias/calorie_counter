@@ -11,6 +11,14 @@
     background-attachment: fixed;
     
     min-height: 90vh;
+
+    @include respond(tab-port) {
+        padding: 5rem 15rem;
+    }
+
+    @include respond(phone) {
+        padding: 5rem 7rem;
+    }
 }
 
 .list-registered-foods {
@@ -21,6 +29,10 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 5rem 2rem;
+
+    @include respond(phone) {
+        padding: 2rem 3rem;
+    }
 }
 
 .registered-food {
