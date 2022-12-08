@@ -4,20 +4,32 @@
 {% block title %}Delete registered food{% endblock %}
 
 {% block content %}
-    <h1>Delete registered food</h1>
 
-    <h2>Are you sure you want to delete {{ object }}?</h2>
+    <div class="section-delete">
+            
+        <h2 class="heading-secondary margin-bottom-large">Are you sure you want to delete?</h2>
+        <h3 class="heading-tertiary text-align-center margin-bottom-large">{{ object }}</h3>
 
-    {% if object.consumed.all %}
-        <h1>Hey you have consumed this food, if you delete, it will delete all foods consumed.</h1>
-        <h2>TODO: Show list of foods consumed with respective days</h2>
+        {% if object.consumed.all %}
+            <h4 class="heading-forth margin-bottom-medium text-align-center">Hey you have registered this food, if you delete, it will delete all of its registration.</h4>
 
-        {% for food_consumed in object.consumed.all %}
-            <p>{{ food_consumed.registered_food.food.name }} - {{ food_consumed.get_meal_display }} - {{ food_consumed.created }}</p>
-        {% endfor %}
-    {% endif %}
-    
-    {% include 'components/form.html' with form=form btn_name='Delete' %}
+            {% for food_consumed in object.consumed.all %}
+                <div class="list-box">
+                    <h4 class="list-box__name">{{ food_consumed.registered_food.food.name }}</h4>
+                    <p class="list-box__info">{{ food_consumed.get_meal_display }} - {{ food_consumed.created }}</p>
+                </div>
+                <!-- <p>{{ food_consumed.registered_food.food.name }} - {{ food_consumed.get_meal_display }} - {{ food_consumed.created }}</p> -->
+            {% endfor %}
+        {% endif %}
+
+        <form action="" method="post" class="form-delete">
+            {% csrf_token %}
+
+            <input class="btn btn-delete" type="submit" value="Delete">
+        </form>
+
+
+    </div>
 
 
 {% endblock %}

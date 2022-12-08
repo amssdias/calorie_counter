@@ -1,0 +1,26 @@
+.list-box {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    padding: 1.4rem 4rem;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    box-shadow: 1.2rem 0.8rem 2rem rgba(0, 0, 0, 0.5);
+    background-color: rgba(248, 250, 252, 1);
+
+    &__name {
+        font-size: 1.8rem;
+    }
+
+    &__info {
+        font-size: 1.2rem;
+    }
+
+    @include respond(tab-port) {
+        width: 90%;
+    }
+}
