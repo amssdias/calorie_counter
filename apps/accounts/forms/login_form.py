@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import gettext_lazy as _
 
-from apps.accounts.models.user import User
+from apps.accounts.models import User
 from apps.accounts.tasks.send_email import send_email_async
 from calorie_counter.utils.celery import task_celery
 
